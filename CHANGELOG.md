@@ -2,6 +2,25 @@
 
 All notable changes to the Revenue Team Economics Simulator will be documented here.
 
+## [0.11.0] — 2026-06-14
+
+### Added
+
+- Save Plan modal with backend-ready save options: new plan, new scenario, or new version.
+- Plan metadata fields: description, visibility, and status.
+- Share Center modal with report link, email invite, stakeholder summary, and role concepts.
+- Report Builder modal with report template selector and section toggles.
+- Report templates for Executive Brief, Client Strategy Report, Manager Review, Investor GTM Snapshot, Board Summary, and Internal Planning Memo.
+- Company logo upload and local logo preview.
+- Brand accent color setting for future branded report exports.
+- Confidentiality label for reports.
+- Export Data Backup renamed and repositioned as an advanced/backup action instead of primary sharing.
+- Email draft flow using mailto for early prototype sharing.
+
+### Status
+
+Implemented on `v0-11-save-share-report-builder` for preview testing. This version refines the save, share, and report workflows around the hosted backend product vision.
+
 ## [0.10.0] — 2026-06-14
 
 ### Added
@@ -56,22 +75,4 @@ Implemented on `v0-9-workspace-planning-ux` for preview testing. This version sh
 
 ### Status
 
-Implemented on `v0-8-sharing-report` for preview testing. This version prepares the static Gumroad product for practical sharing before backend or account-based SaaS work.
-
-## [0.7.0] — 2026-06-14
-
-### Added
-
-- Profile personalization fields for user name, company, industry, and region.
-- Motion-aware role type options for outbound, inbound, paid acquisition, partner/referral, and agency/consulting motions.
-- Motion-aware input groups that show/hide outbound activity, inbound/paid demand, and partner/referral controls.
-- Motion-specific default assumptions when the GTM motion changes.
-- Inbound and paid acquisition logic using inbound leads, marketing spend, CPL, and MQL qualification rate.
-- Partner/referral logic using active partners, leads per partner, partner commission, and partner management cost.
-- Personalized executive narrative using company, industry, region, GTM motion, and selected role type.
-- Motion-aware bottleneck language for outbound, inbound, paid, partner, and agency flows.
-- Channel-cost aware CAC and profit calculations.
-
-### Status
-
-Implemented on `v0-7-motion-aware` for preview testing.
+Implemented on `v0-8-sharing-report` for preview testing.
