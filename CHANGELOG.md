@@ -2,6 +2,24 @@
 
 All notable changes to the Revenue Team Economics Simulator will be documented here.
 
+## [0.12.0] — 2026-06-14
+
+### Added
+
+- Planning Canvas UX that keeps all sections in one continuous workspace instead of switching step pages.
+- Scroll-to-section navigation for Setup, Motions, Inputs, Decision, and Reports.
+- Sticky decision strip showing readiness, CAC, payback, profit, and best motion while users edit assumptions.
+- Collapsible planning sections with summary text for completed areas.
+- Planning mode selector: Quick, Detailed, and Consultant.
+- Plan quality meter: Draft, Review-ready, and Share-ready states.
+- Guided help tooltips using question-mark helper icons on key inputs, outputs, decisions, and motion assumptions.
+- Explainable “Why this result?” decision panel with key drivers.
+- Tooltip-ready motion field descriptions for outbound, inbound, paid acquisition, partner/referral, and agency/consulting motions.
+
+### Status
+
+Implemented on `v0-12-planning-canvas-guided-help` for preview testing. This version makes the product feel lighter, more explainable, and less like a long wizard.
+
 ## [0.11.0] — 2026-06-14
 
 ### Added
@@ -57,7 +75,7 @@ Implemented on `v0-10-multi-motion-flow` for preview testing. This version refra
 
 ### Status
 
-Implemented on `v0-9-workspace-planning-ux` for preview testing. This version shifts the product from a calculator page toward a backend-ready revenue planning workspace.
+Implemented on `v0-9-workspace-planning-ux` for preview testing.
 
 ## [0.8.0] — 2026-06-14
 
