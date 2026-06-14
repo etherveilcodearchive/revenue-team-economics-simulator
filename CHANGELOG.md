@@ -8,16 +8,21 @@ All notable changes to the Revenue Team Economics Simulator will be documented h
 
 - Modern dashboard layout with a sticky input console.
 - Executive decision verdict card with clearer health language.
-- Operating diagnosis cards for CAC, profit, and funnel strength.
+- Operating diagnosis cards for CAC, payback, and funnel strength.
 - Visual funnel-flow chart.
 - Visual money movement chart for revenue, cost, profit, and CAC.
 - Executive command cards with short metric explanations.
-- Collapsible scroll sections for unit economics, detailed metrics, cost breakdown, ramp impact, attainment sensitivity, and scenario table.
+- Target gap planner that reverse-plans required customers, opportunities, and actions.
+- Gross margin input and margin-adjusted LTV:CAC logic.
+- CAC payback months calculation.
+- Scenario battle board with selectable baseline and comparison scenario.
+- Rule-based recommended levers for win rate, lead-to-opportunity rate, ARPU, and cost reduction.
+- Collapsible scroll sections for unit economics, detailed metrics, and scenario table.
 - Card-based scenario board retained and upgraded inside the modern layout.
 
 ### Status
 
-Implemented on `v0-5-modern-dashboard` for preview testing before merge into `develop`.
+Smart economics mechanism implemented on `v0-5-modern-dashboard` for preview testing before merge into `develop`.
 
 ## [0.4.0] — 2026-06-14
 
@@ -95,7 +100,7 @@ Infrastructure live. Product engine not yet ported.
 - Add hiring-over-time mode.
 - Add lead source modes.
 - Add optional acquisition costs.
-- Add target planning inputs.
+- Add target planning refinements.
 
 ### 1.0.0
 
