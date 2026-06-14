@@ -2,6 +2,23 @@
 
 All notable changes to the Revenue Team Economics Simulator will be documented here.
 
+## [0.9.0] — 2026-06-14
+
+### Added
+
+- Workspace-based planning UX built around Workspace → Model → Scenarios → Decisions → Reports.
+- Backend-ready object framing while still running as a static prototype.
+- Workspace dashboard with active model, scale readiness, best next move, and scenario count.
+- Guided model builder that organizes profile, planning goal, GTM motion, team architecture, channel economics, funnel, and targets.
+- Decision engine section with readiness score, CAC, payback, profit, bottlenecks, and recommended actions.
+- Scenario library treated as planning objects instead of raw browser states.
+- Reports and sharing section aligned to a future hosted/collaborative product.
+- Sidebar command-center navigation for a more premium 2026 planning workflow.
+
+### Status
+
+Implemented on `v0-9-workspace-planning-ux` for preview testing. This version shifts the product from a calculator page toward a backend-ready revenue planning workspace.
+
 ## [0.8.0] — 2026-06-14
 
 ### Added
@@ -36,7 +53,7 @@ Implemented on `v0-8-sharing-report` for preview testing. This version prepares 
 
 ### Status
 
-Implemented on `v0-7-motion-aware` for preview testing. This version makes the model more adaptive to the user’s go-to-market motion before further benchmark and report-mode work.
+Implemented on `v0-7-motion-aware` for preview testing.
 
 ## [0.6.0] — 2026-06-14
 
@@ -52,104 +69,3 @@ Implemented on `v0-7-motion-aware` for preview testing. This version makes the m
 ### Status
 
 Implemented on `v0-6-scale-readiness` for preview testing.
-
-## [0.5.0] — 2026-06-14
-
-### Added
-
-- Modern dashboard layout with a sticky input console.
-- Executive decision verdict card with clearer health language.
-- Operating diagnosis cards for CAC, payback, and funnel strength.
-- Visual funnel-flow chart.
-- Visual money movement chart for revenue, cost, profit, and CAC.
-- Executive command cards with short metric explanations.
-- Target gap planner that reverse-plans required customers, opportunities, and actions.
-- Gross margin input and margin-adjusted LTV:CAC logic.
-- CAC payback months calculation.
-- Scenario battle board with selectable baseline and comparison scenario.
-- Rule-based recommended levers for win rate, lead-to-opportunity rate, ARPU, and cost reduction.
-- Collapsible scroll sections for unit economics, detailed metrics, and scenario table.
-- Card-based scenario board retained and upgraded inside the modern layout.
-
-### Status
-
-Smart economics mechanism implemented on `v0-5-modern-dashboard` for preview testing before merge into `develop`.
-
-## [0.4.0] — 2026-06-14
-
-### Added
-
-- Multi-currency display selector: EUR, USD, GBP, PKR, AED, and SAR.
-- GTM motion selector to adapt input language.
-- Role type selector to adapt rep labels.
-- Side-by-side realtime comparison cards.
-- Current Model card compared against saved scenarios.
-- Delta indicators for customers, revenue, profit, CAC, and LTV:CAC.
-- Cleaner comparison UX while keeping the detailed table.
-
-### Status
-
-Implemented on `v0-4-ui-currency-comparison` for preview testing.
-Preview rebuild trigger added after Cloudflare did not show a new branch build automatically.
-
-## [0.3.0] — 2026-06-14
-
-### Added
-
-- Scenario saving with browser localStorage.
-- Scenario load/delete controls.
-- Default scenario restoration.
-- Conservative, base, and aggressive saved scenario set.
-- Scenario comparison table.
-- Compare view for reps, customers, revenue, cost, profit, CAC, and LTV:CAC.
-
-### Status
-
-Scenario system implemented and promoted to production.
-
-## [0.2.0] — 2026-06-14
-
-### Added
-
-- Generalized revenue economics simulator engine.
-- Editable team architecture assumptions.
-- Editable activity and funnel assumptions.
-- Editable revenue model assumptions.
-- Conservative, base, and aggressive scenario presets.
-- Executive health snapshot.
-- Core output metrics: actions, connects, qualified leads, opportunities, customers, revenue, cost, CAC, LTV:CAC, profit, and break-even customers.
-
-### Status
-
-First functional simulator engine deployed. Calculations are generalized and no longer tied to a single company use case.
-
-## [0.1.0] — 2026-06-14
-
-### Added
-
-- Cloudflare Pages deployment foundation.
-- `public/index.html` placeholder landing page.
-- Repository README.
-- Deployment guide.
-- Changelog.
-- Initial simulator shell.
-
-### Status
-
-Infrastructure live. Product engine not yet ported.
-
-## Planned
-
-### 0.9.0
-
-- Add benchmark guidance.
-- Add confidence/risk layer.
-- Add richer PDF/report design.
-- Add ramp and hiring-over-time controls.
-
-### 1.0.0
-
-- Public-ready Gumroad package.
-- Documentation bundle.
-- Scenario guide.
-- Release notes.
