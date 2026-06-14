@@ -17,6 +17,7 @@ All notable changes to the Revenue Team Economics Simulator will be documented h
 ### Status
 
 Implemented on `v0-4-ui-currency-comparison` for preview testing.
+Preview rebuild trigger added after Cloudflare did not show a new branch build automatically.
 
 ## [0.3.0] — 2026-06-14
 
