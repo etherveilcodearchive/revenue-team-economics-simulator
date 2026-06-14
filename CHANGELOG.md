@@ -2,6 +2,23 @@
 
 All notable changes to the Revenue Team Economics Simulator will be documented here.
 
+## [0.5.0] — 2026-06-14
+
+### Added
+
+- Modern dashboard layout with a sticky input console.
+- Executive decision verdict card with clearer health language.
+- Operating diagnosis cards for CAC, profit, and funnel strength.
+- Visual funnel-flow chart.
+- Visual money movement chart for revenue, cost, profit, and CAC.
+- Executive command cards with short metric explanations.
+- Collapsible scroll sections for unit economics, detailed metrics, cost breakdown, ramp impact, attainment sensitivity, and scenario table.
+- Card-based scenario board retained and upgraded inside the modern layout.
+
+### Status
+
+Implemented on `v0-5-modern-dashboard` for preview testing before merge into `develop`.
+
 ## [0.4.0] — 2026-06-14
 
 ### Added
@@ -72,7 +89,7 @@ Infrastructure live. Product engine not yet ported.
 
 ## Planned
 
-### 0.5.0
+### 0.6.0
 
 - Add ramp controls.
 - Add hiring-over-time mode.
