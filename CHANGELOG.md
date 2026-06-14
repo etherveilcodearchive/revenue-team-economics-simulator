@@ -2,6 +2,24 @@
 
 All notable changes to the Revenue Team Economics Simulator will be documented here.
 
+## [0.7.0] — 2026-06-14
+
+### Added
+
+- Profile personalization fields for user name, company, industry, and region.
+- Motion-aware role type options for outbound, inbound, paid acquisition, partner/referral, and agency/consulting motions.
+- Motion-aware input groups that show/hide outbound activity, inbound/paid demand, and partner/referral controls.
+- Motion-specific default assumptions when the GTM motion changes.
+- Inbound and paid acquisition logic using inbound leads, marketing spend, CPL, and MQL qualification rate.
+- Partner/referral logic using active partners, leads per partner, partner commission, and partner management cost.
+- Personalized executive narrative using company, industry, region, GTM motion, and selected role type.
+- Motion-aware bottleneck language for outbound, inbound, paid, partner, and agency flows.
+- Channel-cost aware CAC and profit calculations.
+
+### Status
+
+Implemented on `v0-7-motion-aware` for preview testing. This version makes the model more adaptive to the user’s go-to-market motion before further benchmark and report-mode work.
+
 ## [0.6.0] — 2026-06-14
 
 ### Added
@@ -109,13 +127,12 @@ Infrastructure live. Product engine not yet ported.
 
 ## Planned
 
-### 0.7.0
+### 0.8.0
 
-- Add ramp controls.
-- Add hiring-over-time mode.
-- Add lead source modes.
-- Add optional acquisition costs.
-- Add target planning refinements.
+- Add benchmark guidance.
+- Add confidence/risk layer.
+- Add report mode.
+- Add ramp and hiring-over-time controls.
 
 ### 1.0.0
 
