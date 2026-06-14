@@ -2,6 +2,22 @@
 
 All notable changes to the Revenue Team Economics Simulator will be documented here.
 
+## [0.3.0] — 2026-06-14
+
+### Added
+
+- Scenario saving with browser localStorage.
+- Scenario load/delete controls.
+- Default scenario restoration.
+- Conservative, base, and aggressive saved scenario set.
+- Scenario comparison table.
+- Compare view for reps, customers, revenue, cost, profit, CAC, and LTV:CAC.
+- Branch-based development on `feature/v0-3-scenario-system`.
+
+### Status
+
+Scenario system implemented on feature branch. Pending review and merge into `develop`, then `main`.
+
 ## [0.2.0] — 2026-06-14
 
 ### Added
@@ -39,12 +55,12 @@ Infrastructure live. Product engine not yet ported.
 
 ## Planned
 
-### 0.3.0
+### 0.4.0
 
-- Add scenario saving.
-- Add scenario comparison.
 - Add printable executive summary formatting.
 - Add assumption notes/tooltips.
+- Add cleaner mobile layout.
+- Add scenario export/import.
 
 ### 1.0.0
 
