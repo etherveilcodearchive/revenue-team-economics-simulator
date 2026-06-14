@@ -2,6 +2,21 @@
 
 All notable changes to the Revenue Team Economics Simulator will be documented here.
 
+## [0.6.0] — 2026-06-14
+
+### Added
+
+- Scale readiness score with Do Not Scale / Scale Carefully / Ready to Scale states.
+- Bottleneck detector that identifies weak funnel, unit value, and cost-structure constraints.
+- Recommended action plan generated from the current economics and target gap.
+- Expanded target gap planner showing required reps, required actions, required opportunities, and customer gap.
+- Scenario battle explanation showing profit, LTV:CAC, and payback movement between selected scenarios.
+- Stronger decision framing around whether the model should be scaled, fixed, or validated first.
+
+### Status
+
+Implemented on `v0-6-scale-readiness` for preview testing.
+
 ## [0.5.0] — 2026-06-14
 
 ### Added
@@ -94,7 +109,7 @@ Infrastructure live. Product engine not yet ported.
 
 ## Planned
 
-### 0.6.0
+### 0.7.0
 
 - Add ramp controls.
 - Add hiring-over-time mode.
