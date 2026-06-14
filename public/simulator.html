@@ -4,84 +4,109 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Simulator · Revenue Team Economics Simulator</title>
-  <meta name="description" content="Early simulator shell for EV-PROD-001." />
+  <meta name="description" content="EV-PROD-001 — Revenue Team Economics Simulator by Etherveil." />
   <style>
-    :root { --bg:#0f172a; --panel:#111827; --card:#172033; --text:#e5e7eb; --muted:#9ca3af; --accent:#38bdf8; --good:#22c55e; --warn:#f59e0b; --border:rgba(255,255,255,.12); }
-    * { box-sizing:border-box; }
-    body { margin:0; font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; background:var(--bg); color:var(--text); }
-    header { padding:24px clamp(20px,4vw,48px); border-bottom:1px solid var(--border); display:flex; justify-content:space-between; gap:16px; align-items:center; background:rgba(15,23,42,.92); position:sticky; top:0; backdrop-filter:blur(10px); }
-    a { color:var(--accent); text-decoration:none; }
-    main { padding:32px clamp(20px,4vw,48px); display:grid; grid-template-columns:minmax(280px,420px) 1fr; gap:24px; }
-    @media (max-width:900px){ main{ grid-template-columns:1fr; } }
-    section { border:1px solid var(--border); background:var(--panel); border-radius:22px; padding:22px; }
-    h1,h2 { margin-top:0; }
-    h1 { font-size:clamp(1.8rem,3vw,3rem); }
-    label { display:block; color:var(--muted); font-size:.9rem; margin:16px 0 8px; }
-    input { width:100%; border:1px solid var(--border); border-radius:12px; padding:12px 14px; background:#0b1220; color:var(--text); font-size:1rem; }
-    .grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:16px; }
-    .metric { border:1px solid var(--border); background:var(--card); border-radius:18px; padding:18px; }
-    .metric span { color:var(--muted); font-size:.85rem; }
-    .metric strong { display:block; margin-top:8px; font-size:1.8rem; }
-    .note { color:var(--muted); line-height:1.6; }
-    button { margin-top:18px; border:0; border-radius:999px; padding:12px 18px; background:var(--accent); color:#04111f; font-weight:800; cursor:pointer; }
+    :root { --bg:#0f172a; --panel:#111827; --card:#172033; --soft:#1f2937; --text:#e5e7eb; --muted:#9ca3af; --accent:#38bdf8; --good:#22c55e; --warn:#f59e0b; --bad:#ef4444; --border:rgba(255,255,255,.12); }
+    *{box-sizing:border-box} body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:radial-gradient(circle at top left,rgba(56,189,248,.12),transparent 30%),var(--bg);color:var(--text)}
+    header{padding:22px clamp(18px,4vw,46px);border-bottom:1px solid var(--border);display:flex;justify-content:space-between;gap:16px;align-items:center;background:rgba(15,23,42,.92);position:sticky;top:0;z-index:10;backdrop-filter:blur(10px)}
+    a{color:var(--accent);text-decoration:none}.tag{color:var(--accent);font-weight:800;letter-spacing:.08em;text-transform:uppercase;font-size:.75rem}.muted{color:var(--muted)}
+    main{padding:28px clamp(18px,4vw,46px);display:grid;grid-template-columns:minmax(310px,430px) 1fr;gap:22px}@media(max-width:980px){main{grid-template-columns:1fr}}
+    section,.panel{border:1px solid var(--border);background:rgba(17,24,39,.86);border-radius:22px;padding:22px;box-shadow:0 18px 50px rgba(0,0,0,.18)}
+    h1,h2,h3{margin-top:0} h1{font-size:clamp(1.8rem,3vw,3rem);line-height:1} h2{font-size:1.25rem;margin-bottom:14px} h3{font-size:1rem;margin-bottom:10px;color:var(--text)}
+    .inputs{display:grid;gap:18px}.group{border:1px solid var(--border);border-radius:18px;padding:16px;background:rgba(255,255,255,.03)}
+    .two{display:grid;grid-template-columns:1fr 1fr;gap:12px}@media(max-width:520px){.two{grid-template-columns:1fr}}
+    label{display:block;color:var(--muted);font-size:.82rem;margin:12px 0 7px} input,select{width:100%;border:1px solid var(--border);border-radius:12px;padding:11px 12px;background:#0b1220;color:var(--text);font-size:.95rem} input:focus,select:focus{outline:2px solid rgba(56,189,248,.35)}
+    button{border:0;border-radius:999px;padding:12px 16px;background:var(--accent);color:#04111f;font-weight:900;cursor:pointer}.button-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}.ghost{background:transparent;color:var(--text);border:1px solid var(--border)}
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(175px,1fr));gap:14px}.metric{border:1px solid var(--border);background:var(--card);border-radius:18px;padding:17px}.metric span{display:block;color:var(--muted);font-size:.8rem}.metric strong{display:block;margin-top:8px;font-size:1.6rem;line-height:1.1}.metric small{color:var(--muted)}
+    .output{display:grid;gap:20px}.hero{display:grid;grid-template-columns:1.2fr .8fr;gap:18px}@media(max-width:760px){.hero{grid-template-columns:1fr}}
+    .score{font-size:3.3rem;font-weight:900;line-height:1}.good{color:var(--good)}.warn{color:var(--warn)}.bad{color:var(--bad)}
+    table{width:100%;border-collapse:collapse;overflow:hidden;border-radius:14px}th,td{text-align:left;border-bottom:1px solid var(--border);padding:11px 10px;font-size:.92rem}th{color:var(--muted);font-weight:700;background:rgba(255,255,255,.04)}tr:last-child td{border-bottom:0}.right{text-align:right}.pill{display:inline-flex;align-items:center;border:1px solid var(--border);border-radius:999px;padding:6px 10px;color:var(--muted);font-size:.8rem}.note{line-height:1.6;color:var(--muted)}
   </style>
 </head>
 <body>
-  <header>
-    <strong>EV-PROD-001 · Simulator Shell</strong>
-    <a href="/">Back to landing</a>
-  </header>
+  <header><div><div class="tag">EV-PROD-001 · v0.2 engine</div><strong>Revenue Team Economics Simulator</strong></div><a href="/">Back to landing</a></header>
   <main>
     <section>
-      <h1>Revenue Team Economics Simulator</h1>
-      <p class="note">This is the first deployable simulator shell. The current calculations are placeholder v0.1 logic to validate the deployment path and product layout.</p>
-      <label for="teamSize">Team size</label>
-      <input id="teamSize" type="number" value="4" min="1" />
-      <label for="costPerRep">Monthly cost per rep</label>
-      <input id="costPerRep" type="number" value="4500" min="0" />
-      <label for="dealsPerRep">Deals per rep per month</label>
-      <input id="dealsPerRep" type="number" value="4" min="0" />
-      <label for="arpu">Monthly revenue per customer</label>
-      <input id="arpu" type="number" value="150" min="0" />
-      <button onclick="calculate()">Update model</button>
-    </section>
-    <section>
-      <h2>Output snapshot</h2>
-      <div class="grid">
-        <div class="metric"><span>Total monthly cost</span><strong id="totalCost">—</strong></div>
-        <div class="metric"><span>Deals per month</span><strong id="deals">—</strong></div>
-        <div class="metric"><span>Monthly revenue</span><strong id="monthlyRevenue">—</strong></div>
-        <div class="metric"><span>CAC per deal</span><strong id="cac">—</strong></div>
-        <div class="metric"><span>Annualized revenue</span><strong id="annualRevenue">—</strong></div>
-        <div class="metric"><span>LTV:CAC proxy</span><strong id="ltvCac">—</strong></div>
+      <h1>Model the team before you hire.</h1>
+      <p class="note">Adjust the assumptions below to estimate funnel output, revenue, CAC, LTV:CAC, ramp impact, and team economics.</p>
+      <div class="button-row">
+        <button onclick="preset('conservative')">Conservative</button>
+        <button onclick="preset('base')" class="ghost">Base</button>
+        <button onclick="preset('aggressive')" class="ghost">Aggressive</button>
       </div>
-      <p class="note">Next release: replace placeholder logic with the generalized engine from the audited calculator model.</p>
+      <div class="inputs">
+        <div class="group"><h3>Team architecture</h3><div class="two"><div><label>Revenue reps</label><input id="reps" type="number" value="4" min="1"></div><div><label>Monthly manager cost</label><input id="managerCost" type="number" value="4500" min="0"></div></div><div class="two"><div><label>Monthly base per rep</label><input id="baseCost" type="number" value="3000" min="0"></div><div><label>Monthly variable target per rep</label><input id="variableTarget" type="number" value="1200" min="0"></div></div><div class="two"><div><label>Tools per rep / month</label><input id="toolCost" type="number" value="150" min="0"></div><div><label>Overhead per rep / month</label><input id="overheadCost" type="number" value="350" min="0"></div></div></div>
+        <div class="group"><h3>Activity engine</h3><div class="two"><div><label>Outbound actions / rep / day</label><input id="actionsPerDay" type="number" value="95" min="0"></div><div><label>Working days / month</label><input id="workingDays" type="number" value="21" min="1"></div></div><div class="two"><div><label>New lead %</label><input id="newLeadPct" type="number" value="50" min="0" max="100"></div><div><label>Connect rate %</label><input id="connectRate" type="number" value="10" min="0" max="100"></div></div></div>
+        <div class="group"><h3>Funnel conversion</h3><div class="two"><div><label>Connect → Qualified lead %</label><input id="connectToLead" type="number" value="30" min="0" max="100"></div><div><label>Lead → Opportunity %</label><input id="leadToOpp" type="number" value="50" min="0" max="100"></div></div><div class="two"><div><label>Opportunity → Customer %</label><input id="oppToWin" type="number" value="20" min="0" max="100"></div><div><label>Attainment %</label><input id="attainment" type="number" value="75" min="0" max="200"></div></div></div>
+        <div class="group"><h3>Revenue model</h3><div class="two"><div><label>Monthly revenue / customer</label><input id="arpu" type="number" value="150" min="0"></div><div><label>LTV months</label><input id="ltvMonths" type="number" value="12" min="1"></div></div></div>
+      </div>
+      <div class="button-row"><button onclick="calculate()">Update model</button><button class="ghost" onclick="window.print()">Print summary</button></div>
     </section>
+    <div class="output">
+      <div class="hero"><section><h2>Executive snapshot</h2><div id="score" class="score">—</div><p id="scoreText" class="note">Model awaiting calculation.</p><span id="healthPill" class="pill">Health status</span></section><section><h2>Core economics</h2><div class="grid"><div class="metric"><span>CAC / customer</span><strong id="cac">—</strong></div><div class="metric"><span>LTV:CAC</span><strong id="ltvCac">—</strong></div><div class="metric"><span>Monthly profit</span><strong id="profit">—</strong></div></div></section></div>
+      <section><h2>Output metrics</h2><div class="grid"><div class="metric"><span>Actions / month</span><strong id="actions">—</strong></div><div class="metric"><span>Connects</span><strong id="connects">—</strong></div><div class="metric"><span>Qualified leads</span><strong id="leads">—</strong></div><div class="metric"><span>Opportunities</span><strong id="opps">—</strong></div><div class="metric"><span>Customers won</span><strong id="wins">—</strong></div><div class="metric"><span>Monthly revenue</span><strong id="revenue">—</strong></div><div class="metric"><span>Total monthly cost</span><strong id="cost">—</strong></div><div class="metric"><span>Break-even customers</span><strong id="breakeven">—</strong></div></div></section>
+      <section><h2>Cost breakdown</h2><table><thead><tr><th>Cost component</th><th class="right">Monthly cost</th></tr></thead><tbody id="costRows"></tbody></table></section>
+      <section><h2>Ramp impact</h2><table><thead><tr><th>Month</th><th class="right">Ramp factor</th><th class="right">Customers</th><th class="right">Revenue</th><th class="right">Profit</th></tr></thead><tbody id="rampRows"></tbody></table></section>
+      <section><h2>Attainment sensitivity</h2><table><thead><tr><th>Attainment</th><th class="right">Customers</th><th class="right">CAC</th><th class="right">LTV:CAC</th><th class="right">Profit</th></tr></thead><tbody id="sensitivityRows"></tbody></table></section>
+    </div>
   </main>
   <script>
-    const money = new Intl.NumberFormat('en-US', { style:'currency', currency:'EUR', maximumFractionDigits:0 });
-    function value(id){ return Number(document.getElementById(id).value || 0); }
-    function calculate(){
-      const teamSize = value('teamSize');
-      const costPerRep = value('costPerRep');
-      const dealsPerRep = value('dealsPerRep');
-      const arpu = value('arpu');
-      const totalCost = teamSize * costPerRep;
-      const deals = teamSize * dealsPerRep;
-      const monthlyRevenue = deals * arpu;
-      const annualRevenue = monthlyRevenue * 12;
-      const cac = deals > 0 ? totalCost / deals : 0;
-      const ltv = arpu * 12;
-      const ltvCac = cac > 0 ? ltv / cac : 0;
-      document.getElementById('totalCost').textContent = money.format(totalCost);
-      document.getElementById('deals').textContent = deals.toFixed(0);
-      document.getElementById('monthlyRevenue').textContent = money.format(monthlyRevenue);
-      document.getElementById('cac').textContent = money.format(cac);
-      document.getElementById('annualRevenue').textContent = money.format(annualRevenue);
-      document.getElementById('ltvCac').textContent = ltvCac.toFixed(2) + 'x';
+    const euro = new Intl.NumberFormat('en-US',{style:'currency',currency:'EUR',maximumFractionDigits:0});
+    const num = new Intl.NumberFormat('en-US',{maximumFractionDigits:0});
+    const pct = v => Number(v || 0) / 100;
+    const v = id => Number(document.getElementById(id).value || 0);
+    const set = (id,val) => document.getElementById(id).value = val;
+    function preset(type){
+      const p={
+        conservative:{connectRate:7,connectToLead:22,leadToOpp:38,oppToWin:14,attainment:65},
+        base:{connectRate:10,connectToLead:30,leadToOpp:50,oppToWin:20,attainment:75},
+        aggressive:{connectRate:14,connectToLead:38,leadToOpp:58,oppToWin:26,attainment:100}
+      }[type]; Object.keys(p).forEach(k=>set(k,p[k])); calculate();
     }
-    document.querySelectorAll('input').forEach(input => input.addEventListener('input', calculate));
-    calculate();
+    function model(attainmentOverride){
+      const reps=v('reps'), actionsPerDay=v('actionsPerDay'), workingDays=v('workingDays');
+      const actions = reps * actionsPerDay * workingDays;
+      const newLeads = actions * pct(v('newLeadPct'));
+      const connects = actions * pct(v('connectRate'));
+      const leads = connects * pct(v('connectToLead'));
+      const opps = leads * pct(v('leadToOpp'));
+      const attainment = attainmentOverride ?? v('attainment');
+      const wins = opps * pct(v('oppToWin')) * pct(attainment);
+      const repCost = reps * (v('baseCost') + v('variableTarget') * pct(attainment) + v('toolCost') + v('overheadCost'));
+      const cost = repCost + v('managerCost');
+      const revenue = wins * v('arpu');
+      const profit = revenue - cost;
+      const cac = wins > 0 ? cost / wins : 0;
+      const ltv = v('arpu') * v('ltvMonths');
+      const ltvCac = cac > 0 ? ltv / cac : 0;
+      return {reps,actions,newLeads,connects,leads,opps,wins,repCost,cost,revenue,profit,cac,ltv,ltvCac,attainment};
+    }
+    function calculate(){
+      const m=model();
+      document.getElementById('actions').textContent=num.format(m.actions);
+      document.getElementById('connects').textContent=num.format(m.connects);
+      document.getElementById('leads').textContent=num.format(m.leads);
+      document.getElementById('opps').textContent=num.format(m.opps);
+      document.getElementById('wins').textContent=m.wins.toFixed(1);
+      document.getElementById('revenue').textContent=euro.format(m.revenue);
+      document.getElementById('cost').textContent=euro.format(m.cost);
+      document.getElementById('cac').textContent=euro.format(m.cac);
+      document.getElementById('ltvCac').textContent=m.ltvCac.toFixed(2)+'x';
+      document.getElementById('profit').textContent=euro.format(m.profit);
+      document.getElementById('breakeven').textContent=v('arpu')>0?(m.cost/v('arpu')).toFixed(1):'—';
+      const score=document.getElementById('score'), scoreText=document.getElementById('scoreText'), pill=document.getElementById('healthPill');
+      score.className='score '+(m.ltvCac>=3&&m.profit>0?'good':m.ltvCac>=1.5?'warn':'bad');
+      score.textContent=m.ltvCac.toFixed(2)+'x';
+      scoreText.textContent=m.ltvCac>=3&&m.profit>0?'Healthy model: LTV:CAC is above 3x and monthly profit is positive.':m.ltvCac>=1.5?'Watch model: economics may work, but assumptions need validation.':'Risk model: CAC is too high or output is too low under current assumptions.';
+      pill.textContent=m.profit>=0?'Profitable at current month':'Not yet profitable';
+      const costs=[['Base compensation',m.reps*v('baseCost')],['Variable compensation',m.reps*v('variableTarget')*pct(m.attainment)],['Tools',m.reps*v('toolCost')],['Overhead',m.reps*v('overheadCost')],['Management',v('managerCost')]];
+      document.getElementById('costRows').innerHTML=costs.map(r=>`<tr><td>${r[0]}</td><td class="right">${euro.format(r[1])}</td></tr>`).join('');
+      const ramps=[0,.5,.75,1,1,1];
+      document.getElementById('rampRows').innerHTML=ramps.map((r,i)=>{const wins=m.wins*r, rev=m.revenue*r, profit=rev-m.cost;return `<tr><td>Month ${i+1}</td><td class="right">${Math.round(r*100)}%</td><td class="right">${wins.toFixed(1)}</td><td class="right">${euro.format(rev)}</td><td class="right">${euro.format(profit)}</td></tr>`}).join('');
+      const levels=[50,75,100,125,150];
+      document.getElementById('sensitivityRows').innerHTML=levels.map(a=>{const s=model(a);return `<tr><td>${a}%</td><td class="right">${s.wins.toFixed(1)}</td><td class="right">${euro.format(s.cac)}</td><td class="right">${s.ltvCac.toFixed(2)}x</td><td class="right">${euro.format(s.profit)}</td></tr>`}).join('');
+    }
+    document.querySelectorAll('input').forEach(x=>x.addEventListener('input',calculate)); calculate();
   </script>
 </body>
 </html>
