@@ -13,6 +13,10 @@
     .eyebrow { color:var(--accent); font-weight:700; letter-spacing:.12em; text-transform:uppercase; font-size:.78rem; margin-bottom:18px; }
     h1 { font-size:clamp(2.4rem,6vw,5rem); line-height:.96; margin:0 0 24px; max-width:850px; }
     p { color:var(--muted); font-size:clamp(1rem,2vw,1.2rem); line-height:1.7; max-width:720px; margin:0 0 28px; }
+    .actions { display:flex; gap:14px; flex-wrap:wrap; margin-top:30px; }
+    .button { display:inline-block; border-radius:999px; padding:13px 20px; font-weight:800; text-decoration:none; }
+    .primary { background:var(--accent); color:#04111f; }
+    .secondary { border:1px solid var(--border); color:var(--text); }
     .card-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:16px; margin-top:34px; }
     .card { border:1px solid var(--border); border-radius:18px; padding:18px; background:rgba(255,255,255,.04); }
     .card strong { display:block; margin-bottom:8px; }
@@ -25,10 +29,14 @@
     <div class="eyebrow">EV-PROD-001 · Etherveil</div>
     <h1>Revenue Team Economics Simulator</h1>
     <p>A decision engine for modeling the cost, performance, and economic impact of revenue team design before hiring decisions are made.</p>
+    <div class="actions">
+      <a class="button primary" href="/simulator.html">Open simulator shell</a>
+      <a class="button secondary" href="https://github.com/etherveilcodearchive/revenue-team-economics-simulator">View source</a>
+    </div>
     <div class="card-grid">
       <div class="card"><strong>Status</strong><span>Deployment pipeline active. Product build sprint in progress.</span></div>
       <div class="card"><strong>Purpose</strong><span>Model hiring, compensation, attainment, CAC, LTV:CAC, ramp, and profitability.</span></div>
-      <div class="card"><strong>Next</strong><span>Simulator interface and scenario engine will be added in the next release.</span></div>
+      <div class="card"><strong>Next</strong><span>Generalized engine, scenario presets, and comparison view.</span></div>
     </div>
     <footer>Design revenue teams with confidence before you hire.</footer>
   </main>
