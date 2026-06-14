@@ -2,6 +2,22 @@
 
 All notable changes to the Revenue Team Economics Simulator will be documented here.
 
+## [0.4.0] — 2026-06-14
+
+### Added
+
+- Multi-currency display selector: EUR, USD, GBP, PKR, AED, and SAR.
+- GTM motion selector to adapt input language.
+- Role type selector to adapt rep labels.
+- Side-by-side realtime comparison cards.
+- Current Model card compared against saved scenarios.
+- Delta indicators for customers, revenue, profit, CAC, and LTV:CAC.
+- Cleaner comparison UX while keeping the detailed table.
+
+### Status
+
+Implemented on `v0-4-ui-currency-comparison` for preview testing.
+
 ## [0.3.0] — 2026-06-14
 
 ### Added
@@ -16,7 +32,7 @@ All notable changes to the Revenue Team Economics Simulator will be documented h
 
 ### Status
 
-Scenario system implemented on feature branch. Pending review and merge into `develop`, then `main`.
+Scenario system implemented and promoted to production.
 
 ## [0.2.0] — 2026-06-14
 
@@ -55,12 +71,13 @@ Infrastructure live. Product engine not yet ported.
 
 ## Planned
 
-### 0.4.0
+### 0.5.0
 
-- Add printable executive summary formatting.
-- Add assumption notes/tooltips.
-- Add cleaner mobile layout.
-- Add scenario export/import.
+- Add ramp controls.
+- Add hiring-over-time mode.
+- Add lead source modes.
+- Add optional acquisition costs.
+- Add target planning inputs.
 
 ### 1.0.0
 
