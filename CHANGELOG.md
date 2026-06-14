@@ -2,6 +2,27 @@
 
 All notable changes to the Revenue Team Economics Simulator will be documented here.
 
+## [0.10.0] — 2026-06-14
+
+### Added
+
+- Multi-motion guided planning flow.
+- Minimal premium visual system using warm paper, graphite, bronze, and deep green tones.
+- Step-based process: setup, goal, active motions, motion inputs, shared costs, decision review, and reports.
+- Multi-select acquisition motions instead of single GTM motion selection.
+- Motion-specific mini-models for outbound, inbound, paid acquisition, partner/referral, and agency/consulting.
+- Motion-level economics: customers, revenue, cost, CAC, payback, LTV:CAC, and profit.
+- Portfolio-level blended economics across all selected motions.
+- Shared cost and overhead layer applied at portfolio level.
+- Motion mix visualization by customer contribution.
+- Decision engine that identifies best and weakest active motion.
+- Portfolio scenario save/load and share-link support.
+- Multi-motion report generation and download.
+
+### Status
+
+Implemented on `v0-10-multi-motion-flow` for preview testing. This version reframes the product around realistic mixed acquisition motions instead of forcing a single sales motion.
+
 ## [0.9.0] — 2026-06-14
 
 ### Added
@@ -54,18 +75,3 @@ Implemented on `v0-8-sharing-report` for preview testing. This version prepares 
 ### Status
 
 Implemented on `v0-7-motion-aware` for preview testing.
-
-## [0.6.0] — 2026-06-14
-
-### Added
-
-- Scale readiness score with Do Not Scale / Scale Carefully / Ready to Scale states.
-- Bottleneck detector that identifies weak funnel, unit value, and cost-structure constraints.
-- Recommended action plan generated from the current economics and target gap.
-- Expanded target gap planner showing required reps, required actions, required opportunities, and customer gap.
-- Scenario battle explanation showing profit, LTV:CAC, and payback movement between selected scenarios.
-- Stronger decision framing around whether the model should be scaled, fixed, or validated first.
-
-### Status
-
-Implemented on `v0-6-scale-readiness` for preview testing.
