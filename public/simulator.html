@@ -16,25 +16,28 @@
     .inputs{display:grid;gap:18px}.group{border:1px solid var(--border);border-radius:18px;padding:16px;background:rgba(255,255,255,.03)}
     .two{display:grid;grid-template-columns:1fr 1fr;gap:12px}@media(max-width:520px){.two{grid-template-columns:1fr}}
     label{display:block;color:var(--muted);font-size:.82rem;margin:12px 0 7px} input,select{width:100%;border:1px solid var(--border);border-radius:12px;padding:11px 12px;background:#0b1220;color:var(--text);font-size:.95rem} input:focus,select:focus{outline:2px solid rgba(56,189,248,.35)}
-    button{border:0;border-radius:999px;padding:12px 16px;background:var(--accent);color:#04111f;font-weight:900;cursor:pointer}.button-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}.ghost{background:transparent;color:var(--text);border:1px solid var(--border)}
+    button{border:0;border-radius:999px;padding:12px 16px;background:var(--accent);color:#04111f;font-weight:900;cursor:pointer}.button-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}.ghost{background:transparent;color:var(--text);border:1px solid var(--border)}.danger{background:transparent;color:var(--bad);border:1px solid rgba(239,68,68,.45)}
     .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(175px,1fr));gap:14px}.metric{border:1px solid var(--border);background:var(--card);border-radius:18px;padding:17px}.metric span{display:block;color:var(--muted);font-size:.8rem}.metric strong{display:block;margin-top:8px;font-size:1.6rem;line-height:1.1}.metric small{color:var(--muted)}
     .output{display:grid;gap:20px}.hero{display:grid;grid-template-columns:1.2fr .8fr;gap:18px}@media(max-width:760px){.hero{grid-template-columns:1fr}}
     .score{font-size:3.3rem;font-weight:900;line-height:1}.good{color:var(--good)}.warn{color:var(--warn)}.bad{color:var(--bad)}
     table{width:100%;border-collapse:collapse;overflow:hidden;border-radius:14px}th,td{text-align:left;border-bottom:1px solid var(--border);padding:11px 10px;font-size:.92rem}th{color:var(--muted);font-weight:700;background:rgba(255,255,255,.04)}tr:last-child td{border-bottom:0}.right{text-align:right}.pill{display:inline-flex;align-items:center;border:1px solid var(--border);border-radius:999px;padding:6px 10px;color:var(--muted);font-size:.8rem}.note{line-height:1.6;color:var(--muted)}
+    .scenario-list{display:grid;gap:10px;margin-top:14px}.scenario-item{display:flex;justify-content:space-between;gap:10px;align-items:center;border:1px solid var(--border);background:rgba(255,255,255,.035);border-radius:14px;padding:11px}.scenario-item strong{font-size:.95rem}.mini-actions{display:flex;gap:8px;flex-wrap:wrap}.mini-actions button{padding:8px 10px;font-size:.78rem}.compare-wrap{overflow:auto}.empty{color:var(--muted);font-style:italic}.selected{outline:2px solid rgba(56,189,248,.35)}
+    @media print{header,.button-row,.mini-actions,.scenario-controls{display:none!important}body{background:white;color:#111827}section,.panel{box-shadow:none;background:white;color:#111827;border-color:#d1d5db}.note,.muted,label{color:#4b5563}.metric{background:#f9fafb;color:#111827}.score.good,.score.warn,.score.bad{color:#111827}}
   </style>
 </head>
 <body>
-  <header><div><div class="tag">EV-PROD-001 · v0.2 engine</div><strong>Revenue Team Economics Simulator</strong></div><a href="/">Back to landing</a></header>
+  <header><div><div class="tag">EV-PROD-001 · v0.3 scenario system</div><strong>Revenue Team Economics Simulator</strong></div><a href="/">Back to landing</a></header>
   <main>
     <section>
       <h1>Model the team before you hire.</h1>
-      <p class="note">Adjust the assumptions below to estimate funnel output, revenue, CAC, LTV:CAC, ramp impact, and team economics.</p>
+      <p class="note">Adjust assumptions, save named scenarios, and compare strategic revenue-team options before committing to hiring spend.</p>
       <div class="button-row">
         <button onclick="preset('conservative')">Conservative</button>
         <button onclick="preset('base')" class="ghost">Base</button>
         <button onclick="preset('aggressive')" class="ghost">Aggressive</button>
       </div>
       <div class="inputs">
+        <div class="group"><h3>Scenario controls</h3><div class="scenario-controls"><label>Scenario name</label><input id="scenarioName" type="text" value="Base Case"><div class="button-row"><button onclick="saveScenario()">Save scenario</button><button class="ghost" onclick="loadDefaultScenarios()">Restore defaults</button><button class="danger" onclick="clearScenarios()">Clear saved</button></div></div><div id="scenarioList" class="scenario-list"></div></div>
         <div class="group"><h3>Team architecture</h3><div class="two"><div><label>Revenue reps</label><input id="reps" type="number" value="4" min="1"></div><div><label>Monthly manager cost</label><input id="managerCost" type="number" value="4500" min="0"></div></div><div class="two"><div><label>Monthly base per rep</label><input id="baseCost" type="number" value="3000" min="0"></div><div><label>Monthly variable target per rep</label><input id="variableTarget" type="number" value="1200" min="0"></div></div><div class="two"><div><label>Tools per rep / month</label><input id="toolCost" type="number" value="150" min="0"></div><div><label>Overhead per rep / month</label><input id="overheadCost" type="number" value="350" min="0"></div></div></div>
         <div class="group"><h3>Activity engine</h3><div class="two"><div><label>Outbound actions / rep / day</label><input id="actionsPerDay" type="number" value="95" min="0"></div><div><label>Working days / month</label><input id="workingDays" type="number" value="21" min="1"></div></div><div class="two"><div><label>New lead %</label><input id="newLeadPct" type="number" value="50" min="0" max="100"></div><div><label>Connect rate %</label><input id="connectRate" type="number" value="10" min="0" max="100"></div></div></div>
         <div class="group"><h3>Funnel conversion</h3><div class="two"><div><label>Connect → Qualified lead %</label><input id="connectToLead" type="number" value="30" min="0" max="100"></div><div><label>Lead → Opportunity %</label><input id="leadToOpp" type="number" value="50" min="0" max="100"></div></div><div class="two"><div><label>Opportunity → Customer %</label><input id="oppToWin" type="number" value="20" min="0" max="100"></div><div><label>Attainment %</label><input id="attainment" type="number" value="75" min="0" max="200"></div></div></div>
@@ -44,6 +47,7 @@
     </section>
     <div class="output">
       <div class="hero"><section><h2>Executive snapshot</h2><div id="score" class="score">—</div><p id="scoreText" class="note">Model awaiting calculation.</p><span id="healthPill" class="pill">Health status</span></section><section><h2>Core economics</h2><div class="grid"><div class="metric"><span>CAC / customer</span><strong id="cac">—</strong></div><div class="metric"><span>LTV:CAC</span><strong id="ltvCac">—</strong></div><div class="metric"><span>Monthly profit</span><strong id="profit">—</strong></div></div></section></div>
+      <section><h2>Scenario comparison</h2><div class="compare-wrap"><table><thead><tr><th>Scenario</th><th class="right">Reps</th><th class="right">Customers</th><th class="right">Revenue</th><th class="right">Cost</th><th class="right">Profit</th><th class="right">CAC</th><th class="right">LTV:CAC</th></tr></thead><tbody id="compareRows"></tbody></table></div></section>
       <section><h2>Output metrics</h2><div class="grid"><div class="metric"><span>Actions / month</span><strong id="actions">—</strong></div><div class="metric"><span>Connects</span><strong id="connects">—</strong></div><div class="metric"><span>Qualified leads</span><strong id="leads">—</strong></div><div class="metric"><span>Opportunities</span><strong id="opps">—</strong></div><div class="metric"><span>Customers won</span><strong id="wins">—</strong></div><div class="metric"><span>Monthly revenue</span><strong id="revenue">—</strong></div><div class="metric"><span>Total monthly cost</span><strong id="cost">—</strong></div><div class="metric"><span>Break-even customers</span><strong id="breakeven">—</strong></div></div></section>
       <section><h2>Cost breakdown</h2><table><thead><tr><th>Cost component</th><th class="right">Monthly cost</th></tr></thead><tbody id="costRows"></tbody></table></section>
       <section><h2>Ramp impact</h2><table><thead><tr><th>Month</th><th class="right">Ramp factor</th><th class="right">Customers</th><th class="right">Revenue</th><th class="right">Profit</th></tr></thead><tbody id="rampRows"></tbody></table></section>
@@ -51,62 +55,54 @@
     </div>
   </main>
   <script>
-    const euro = new Intl.NumberFormat('en-US',{style:'currency',currency:'EUR',maximumFractionDigits:0});
-    const num = new Intl.NumberFormat('en-US',{maximumFractionDigits:0});
-    const pct = v => Number(v || 0) / 100;
-    const v = id => Number(document.getElementById(id).value || 0);
-    const set = (id,val) => document.getElementById(id).value = val;
-    function preset(type){
-      const p={
-        conservative:{connectRate:7,connectToLead:22,leadToOpp:38,oppToWin:14,attainment:65},
-        base:{connectRate:10,connectToLead:30,leadToOpp:50,oppToWin:20,attainment:75},
-        aggressive:{connectRate:14,connectToLead:38,leadToOpp:58,oppToWin:26,attainment:100}
-      }[type]; Object.keys(p).forEach(k=>set(k,p[k])); calculate();
-    }
-    function model(attainmentOverride){
-      const reps=v('reps'), actionsPerDay=v('actionsPerDay'), workingDays=v('workingDays');
-      const actions = reps * actionsPerDay * workingDays;
-      const newLeads = actions * pct(v('newLeadPct'));
-      const connects = actions * pct(v('connectRate'));
-      const leads = connects * pct(v('connectToLead'));
-      const opps = leads * pct(v('leadToOpp'));
-      const attainment = attainmentOverride ?? v('attainment');
-      const wins = opps * pct(v('oppToWin')) * pct(attainment);
-      const repCost = reps * (v('baseCost') + v('variableTarget') * pct(attainment) + v('toolCost') + v('overheadCost'));
-      const cost = repCost + v('managerCost');
-      const revenue = wins * v('arpu');
-      const profit = revenue - cost;
-      const cac = wins > 0 ? cost / wins : 0;
-      const ltv = v('arpu') * v('ltvMonths');
-      const ltvCac = cac > 0 ? ltv / cac : 0;
-      return {reps,actions,newLeads,connects,leads,opps,wins,repCost,cost,revenue,profit,cac,ltv,ltvCac,attainment};
+    const STORAGE_KEY='ev_prod_001_scenarios_v1';
+    const inputIds=['reps','managerCost','baseCost','variableTarget','toolCost','overheadCost','actionsPerDay','workingDays','newLeadPct','connectRate','connectToLead','leadToOpp','oppToWin','attainment','arpu','ltvMonths'];
+    const euro=new Intl.NumberFormat('en-US',{style:'currency',currency:'EUR',maximumFractionDigits:0});
+    const num=new Intl.NumberFormat('en-US',{maximumFractionDigits:0});
+    const pct=v=>Number(v||0)/100;
+    const v=id=>Number(document.getElementById(id).value||0);
+    const set=(id,val)=>document.getElementById(id).value=val;
+    function getInputs(){const data={};inputIds.forEach(id=>data[id]=v(id));return data;}
+    function applyInputs(data){inputIds.forEach(id=>{if(data[id]!==undefined)set(id,data[id]);});calculate();}
+    function preset(type){const p={conservative:{connectRate:7,connectToLead:22,leadToOpp:38,oppToWin:14,attainment:65},base:{connectRate:10,connectToLead:30,leadToOpp:50,oppToWin:20,attainment:75},aggressive:{connectRate:14,connectToLead:38,leadToOpp:58,oppToWin:26,attainment:100}}[type];Object.keys(p).forEach(k=>set(k,p[k]));document.getElementById('scenarioName').value=type[0].toUpperCase()+type.slice(1)+' Case';calculate();}
+    function model(attainmentOverride,dataOverride){
+      const source=dataOverride||getInputs(); const get=id=>Number(source[id]||0); const reps=get('reps');
+      const actions=reps*get('actionsPerDay')*get('workingDays');
+      const connects=actions*pct(get('connectRate'));
+      const leads=connects*pct(get('connectToLead'));
+      const opps=leads*pct(get('leadToOpp'));
+      const attainment=attainmentOverride??get('attainment');
+      const wins=opps*pct(get('oppToWin'))*pct(attainment);
+      const repCost=reps*(get('baseCost')+get('variableTarget')*pct(attainment)+get('toolCost')+get('overheadCost'));
+      const cost=repCost+get('managerCost');
+      const revenue=wins*get('arpu');
+      const profit=revenue-cost;
+      const cac=wins>0?cost/wins:0;
+      const ltv=get('arpu')*get('ltvMonths');
+      const ltvCac=cac>0?ltv/cac:0;
+      return{reps,actions,connects,leads,opps,wins,repCost,cost,revenue,profit,cac,ltv,ltvCac,attainment};
     }
     function calculate(){
       const m=model();
-      document.getElementById('actions').textContent=num.format(m.actions);
-      document.getElementById('connects').textContent=num.format(m.connects);
-      document.getElementById('leads').textContent=num.format(m.leads);
-      document.getElementById('opps').textContent=num.format(m.opps);
-      document.getElementById('wins').textContent=m.wins.toFixed(1);
-      document.getElementById('revenue').textContent=euro.format(m.revenue);
-      document.getElementById('cost').textContent=euro.format(m.cost);
-      document.getElementById('cac').textContent=euro.format(m.cac);
-      document.getElementById('ltvCac').textContent=m.ltvCac.toFixed(2)+'x';
-      document.getElementById('profit').textContent=euro.format(m.profit);
-      document.getElementById('breakeven').textContent=v('arpu')>0?(m.cost/v('arpu')).toFixed(1):'—';
-      const score=document.getElementById('score'), scoreText=document.getElementById('scoreText'), pill=document.getElementById('healthPill');
-      score.className='score '+(m.ltvCac>=3&&m.profit>0?'good':m.ltvCac>=1.5?'warn':'bad');
-      score.textContent=m.ltvCac.toFixed(2)+'x';
-      scoreText.textContent=m.ltvCac>=3&&m.profit>0?'Healthy model: LTV:CAC is above 3x and monthly profit is positive.':m.ltvCac>=1.5?'Watch model: economics may work, but assumptions need validation.':'Risk model: CAC is too high or output is too low under current assumptions.';
-      pill.textContent=m.profit>=0?'Profitable at current month':'Not yet profitable';
-      const costs=[['Base compensation',m.reps*v('baseCost')],['Variable compensation',m.reps*v('variableTarget')*pct(m.attainment)],['Tools',m.reps*v('toolCost')],['Overhead',m.reps*v('overheadCost')],['Management',v('managerCost')]];
-      document.getElementById('costRows').innerHTML=costs.map(r=>`<tr><td>${r[0]}</td><td class="right">${euro.format(r[1])}</td></tr>`).join('');
-      const ramps=[0,.5,.75,1,1,1];
-      document.getElementById('rampRows').innerHTML=ramps.map((r,i)=>{const wins=m.wins*r, rev=m.revenue*r, profit=rev-m.cost;return `<tr><td>Month ${i+1}</td><td class="right">${Math.round(r*100)}%</td><td class="right">${wins.toFixed(1)}</td><td class="right">${euro.format(rev)}</td><td class="right">${euro.format(profit)}</td></tr>`}).join('');
-      const levels=[50,75,100,125,150];
-      document.getElementById('sensitivityRows').innerHTML=levels.map(a=>{const s=model(a);return `<tr><td>${a}%</td><td class="right">${s.wins.toFixed(1)}</td><td class="right">${euro.format(s.cac)}</td><td class="right">${s.ltvCac.toFixed(2)}x</td><td class="right">${euro.format(s.profit)}</td></tr>`}).join('');
+      document.getElementById('actions').textContent=num.format(m.actions);document.getElementById('connects').textContent=num.format(m.connects);document.getElementById('leads').textContent=num.format(m.leads);document.getElementById('opps').textContent=num.format(m.opps);document.getElementById('wins').textContent=m.wins.toFixed(1);document.getElementById('revenue').textContent=euro.format(m.revenue);document.getElementById('cost').textContent=euro.format(m.cost);document.getElementById('cac').textContent=euro.format(m.cac);document.getElementById('ltvCac').textContent=m.ltvCac.toFixed(2)+'x';document.getElementById('profit').textContent=euro.format(m.profit);document.getElementById('breakeven').textContent=v('arpu')>0?(m.cost/v('arpu')).toFixed(1):'—';
+      const score=document.getElementById('score'),scoreText=document.getElementById('scoreText'),pill=document.getElementById('healthPill');
+      score.className='score '+(m.ltvCac>=3&&m.profit>0?'good':m.ltvCac>=1.5?'warn':'bad');score.textContent=m.ltvCac.toFixed(2)+'x';scoreText.textContent=m.ltvCac>=3&&m.profit>0?'Healthy model: LTV:CAC is above 3x and monthly profit is positive.':m.ltvCac>=1.5?'Watch model: economics may work, but assumptions need validation.':'Risk model: CAC is too high or output is too low under current assumptions.';pill.textContent=m.profit>=0?'Profitable at current month':'Not yet profitable';
+      const costs=[['Base compensation',m.reps*v('baseCost')],['Variable compensation',m.reps*v('variableTarget')*pct(m.attainment)],['Tools',m.reps*v('toolCost')],['Overhead',m.reps*v('overheadCost')],['Management',v('managerCost')]];document.getElementById('costRows').innerHTML=costs.map(r=>`<tr><td>${r[0]}</td><td class="right">${euro.format(r[1])}</td></tr>`).join('');
+      const ramps=[0,.5,.75,1,1,1];document.getElementById('rampRows').innerHTML=ramps.map((r,i)=>{const wins=m.wins*r,rev=m.revenue*r,profit=rev-m.cost;return`<tr><td>Month ${i+1}</td><td class="right">${Math.round(r*100)}%</td><td class="right">${wins.toFixed(1)}</td><td class="right">${euro.format(rev)}</td><td class="right">${euro.format(profit)}</td></tr>`}).join('');
+      const levels=[50,75,100,125,150];document.getElementById('sensitivityRows').innerHTML=levels.map(a=>{const s=model(a);return`<tr><td>${a}%</td><td class="right">${s.wins.toFixed(1)}</td><td class="right">${euro.format(s.cac)}</td><td class="right">${s.ltvCac.toFixed(2)}x</td><td class="right">${euro.format(s.profit)}</td></tr>`}).join('');
+      renderScenarios();
     }
-    document.querySelectorAll('input').forEach(x=>x.addEventListener('input',calculate)); calculate();
+    function scenarios(){try{return JSON.parse(localStorage.getItem(STORAGE_KEY))||[]}catch(e){return[]}}
+    function writeScenarios(items){localStorage.setItem(STORAGE_KEY,JSON.stringify(items));renderScenarios();}
+    function saveScenario(){const name=(document.getElementById('scenarioName').value||'Untitled Scenario').trim();const items=scenarios();const existing=items.findIndex(x=>x.name.toLowerCase()===name.toLowerCase());const scenario={id:existing>=0?items[existing].id:Date.now().toString(),name,createdAt:new Date().toISOString(),inputs:getInputs()};if(existing>=0)items[existing]=scenario;else items.push(scenario);writeScenarios(items);}
+    function loadScenario(id){const s=scenarios().find(x=>x.id===id);if(!s)return;document.getElementById('scenarioName').value=s.name;applyInputs(s.inputs);}
+    function deleteScenario(id){writeScenarios(scenarios().filter(x=>x.id!==id));}
+    function clearScenarios(){if(confirm('Clear all saved scenarios on this browser?'))writeScenarios([]);}
+    function loadDefaultScenarios(){const base=getInputs();const mk=(name,changes)=>({id:name.toLowerCase().replace(/\s+/g,'-'),name,createdAt:new Date().toISOString(),inputs:{...base,...changes}});writeScenarios([mk('Conservative Case',{connectRate:7,connectToLead:22,leadToOpp:38,oppToWin:14,attainment:65}),mk('Base Case',{connectRate:10,connectToLead:30,leadToOpp:50,oppToWin:20,attainment:75}),mk('Aggressive Case',{connectRate:14,connectToLead:38,leadToOpp:58,oppToWin:26,attainment:100})]);}
+    function renderScenarios(){const items=scenarios();const list=document.getElementById('scenarioList');const compare=document.getElementById('compareRows');if(!items.length){list.innerHTML='<div class="empty">No saved scenarios yet.</div>';compare.innerHTML='<tr><td colspan="8" class="empty">Save scenarios to compare strategic options.</td></tr>';return;}list.innerHTML=items.map(s=>`<div class="scenario-item"><div><strong>${s.name}</strong><br><span class="muted">${new Date(s.createdAt).toLocaleDateString()}</span></div><div class="mini-actions"><button class="ghost" onclick="loadScenario('${s.id}')">Load</button><button class="danger" onclick="deleteScenario('${s.id}')">Delete</button></div></div>`).join('');compare.innerHTML=items.map(s=>{const m=model(undefined,s.inputs);const cls=m.ltvCac>=3&&m.profit>0?'good':m.ltvCac>=1.5?'warn':'bad';return`<tr><td>${s.name}</td><td class="right">${m.reps}</td><td class="right">${m.wins.toFixed(1)}</td><td class="right">${euro.format(m.revenue)}</td><td class="right">${euro.format(m.cost)}</td><td class="right ${m.profit>=0?'good':'bad'}">${euro.format(m.profit)}</td><td class="right">${euro.format(m.cac)}</td><td class="right ${cls}">${m.ltvCac.toFixed(2)}x</td></tr>`}).join('');}
+    document.querySelectorAll('input').forEach(x=>x.addEventListener('input',calculate));
+    if(!scenarios().length)loadDefaultScenarios();
+    calculate();
   </script>
 </body>
 </html>
