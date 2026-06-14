@@ -2,6 +2,24 @@
 
 All notable changes to the Revenue Team Economics Simulator will be documented here.
 
+## [0.8.0] — 2026-06-14
+
+### Added
+
+- Static sharing toolkit without requiring a backend.
+- Export current scenario as JSON.
+- Export all saved scenarios as a scenario pack.
+- Import scenario JSON and scenario pack JSON.
+- Copy encoded share link for current scenario state.
+- Copy executive summary to clipboard.
+- Report mode with generated client/manager-ready text report.
+- Copy report and download report actions.
+- Region / market changed from free text to structured dropdown.
+
+### Status
+
+Implemented on `v0-8-sharing-report` for preview testing. This version prepares the static Gumroad product for practical sharing before backend or account-based SaaS work.
+
 ## [0.7.0] — 2026-06-14
 
 ### Added
@@ -84,7 +102,6 @@ Preview rebuild trigger added after Cloudflare did not show a new branch build a
 - Conservative, base, and aggressive saved scenario set.
 - Scenario comparison table.
 - Compare view for reps, customers, revenue, cost, profit, CAC, and LTV:CAC.
-- Branch-based development on `feature/v0-3-scenario-system`.
 
 ### Status
 
@@ -101,10 +118,6 @@ Scenario system implemented and promoted to production.
 - Conservative, base, and aggressive scenario presets.
 - Executive health snapshot.
 - Core output metrics: actions, connects, qualified leads, opportunities, customers, revenue, cost, CAC, LTV:CAC, profit, and break-even customers.
-- Cost breakdown table.
-- Ramp impact table.
-- Attainment sensitivity table.
-- Print summary action.
 
 ### Status
 
@@ -127,11 +140,11 @@ Infrastructure live. Product engine not yet ported.
 
 ## Planned
 
-### 0.8.0
+### 0.9.0
 
 - Add benchmark guidance.
 - Add confidence/risk layer.
-- Add report mode.
+- Add richer PDF/report design.
 - Add ramp and hiring-over-time controls.
 
 ### 1.0.0
