@@ -3,42 +3,44 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Revenue Team Economics Simulator</title>
-  <meta name="description" content="EV-PROD-001 — Revenue Team Economics Simulator by Etherveil." />
+  <title>Revenue Motion Planner · Etherveil</title>
+  <meta name="description" content="EV-PROD-001 — Revenue Motion Planner by Etherveil." />
   <style>
-    :root { --bg:#0f172a; --panel:#111827; --text:#e5e7eb; --muted:#9ca3af; --accent:#38bdf8; --border:rgba(255,255,255,.12); }
+    :root { --bg:#11100e; --panel:#171410; --text:#f7f0df; --muted:#b9aa92; --accent:#f1d18a; --gold:#c69749; --border:rgba(241,209,138,.18); }
     * { box-sizing: border-box; }
-    body { margin:0; font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; background:radial-gradient(circle at top left,rgba(56,189,248,.18),transparent 35%),var(--bg); color:var(--text); min-height:100vh; display:grid; place-items:center; padding:32px; }
-    main { width:min(960px,100%); border:1px solid var(--border); background:rgba(17,24,39,.78); backdrop-filter:blur(14px); border-radius:28px; padding:clamp(28px,5vw,56px); box-shadow:0 24px 80px rgba(0,0,0,.35); }
-    .eyebrow { color:var(--accent); font-weight:700; letter-spacing:.12em; text-transform:uppercase; font-size:.78rem; margin-bottom:18px; }
-    h1 { font-size:clamp(2.4rem,6vw,5rem); line-height:.96; margin:0 0 24px; max-width:850px; }
-    p { color:var(--muted); font-size:clamp(1rem,2vw,1.2rem); line-height:1.7; max-width:720px; margin:0 0 28px; }
+    body { margin:0; font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; background:radial-gradient(circle at top left,rgba(198,151,73,.28),transparent 36%),linear-gradient(180deg,#11100e,#1b1712); color:var(--text); min-height:100vh; display:grid; place-items:center; padding:32px; }
+    body:before{content:"";position:fixed;inset:0;background-image:linear-gradient(90deg,rgba(255,255,255,.05) 1px,transparent 1px),linear-gradient(rgba(255,255,255,.04) 1px,transparent 1px);background-size:72px 72px;opacity:.16;pointer-events:none;}
+    main { width:min(1040px,100%); border:1px solid var(--border); background:rgba(23,20,16,.82); backdrop-filter:blur(14px); border-radius:34px; padding:clamp(28px,5vw,62px); box-shadow:0 28px 90px rgba(0,0,0,.38); position:relative; overflow:hidden; }
+    main:after{content:"ᚠ ᚱ ᚷ ᛖ";position:absolute;right:-10px;bottom:12px;font-size:6rem;color:rgba(241,209,138,.06);font-weight:900;letter-spacing:.14em;}
+    .eyebrow { color:var(--accent); font-weight:900; letter-spacing:.16em; text-transform:uppercase; font-size:.78rem; margin-bottom:18px; }
+    h1 { font-size:clamp(2.8rem,7vw,6.2rem); line-height:.9; margin:0 0 24px; max-width:900px; letter-spacing:-.07em; }
+    p { color:var(--muted); font-size:clamp(1rem,2vw,1.22rem); line-height:1.7; max-width:760px; margin:0 0 28px; }
     .actions { display:flex; gap:14px; flex-wrap:wrap; margin-top:30px; }
-    .button { display:inline-block; border-radius:999px; padding:13px 20px; font-weight:800; text-decoration:none; }
-    .primary { background:var(--accent); color:#04111f; }
+    .button { display:inline-block; border-radius:999px; padding:13px 20px; font-weight:900; text-decoration:none; }
+    .primary { background:linear-gradient(135deg,var(--gold),var(--accent)); color:#1e160d; }
     .secondary { border:1px solid var(--border); color:var(--text); }
     .card-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:16px; margin-top:34px; }
-    .card { border:1px solid var(--border); border-radius:18px; padding:18px; background:rgba(255,255,255,.04); }
-    .card strong { display:block; margin-bottom:8px; }
+    .card { border:1px solid var(--border); border-radius:20px; padding:18px; background:rgba(255,255,255,.045); }
+    .card strong { display:block; margin-bottom:8px; color:var(--accent); }
     .card span { color:var(--muted); line-height:1.5; }
     footer { margin-top:36px; color:var(--muted); font-size:.9rem; }
   </style>
 </head>
 <body>
   <main>
-    <div class="eyebrow">EV-PROD-001 · Etherveil</div>
-    <h1>Revenue Team Economics Simulator</h1>
-    <p>A decision engine for modeling the cost, performance, and economic impact of revenue team design before hiring decisions are made.</p>
+    <div class="eyebrow">EV-PROD-001 · Etherveil Forge</div>
+    <h1>Model before you hire. Decide before you scale.</h1>
+    <p>A decision forge for testing GTM and revenue motion economics before headcount, spend, and assumptions become expensive.</p>
     <div class="actions">
-      <a class="button primary" href="/simulator.html">Open simulator shell</a>
-      <a class="button secondary" href="https://github.com/etherveilcodearchive/revenue-team-economics-simulator">View source</a>
+      <a class="button primary" href="/simulator-v13.html">Open v0.13 workspace</a>
+      <a class="button secondary" href="/simulator.html">Open v0.12 planning canvas</a>
     </div>
     <div class="card-grid">
-      <div class="card"><strong>Status</strong><span>Deployment pipeline active. Product build sprint in progress.</span></div>
-      <div class="card"><strong>Purpose</strong><span>Model hiring, compensation, attainment, CAC, LTV:CAC, ramp, and profitability.</span></div>
-      <div class="card"><strong>Next</strong><span>Generalized engine, scenario presets, and comparison view.</span></div>
+      <div class="card"><strong>v0.13</strong><span>Decision memo workspace with CAC, payback, LTV:CAC, profit, readiness, and copyable memo output.</span></div>
+      <div class="card"><strong>Purpose</strong><span>Help founders and operators decide whether to scale, fix, or pause a revenue motion.</span></div>
+      <div class="card"><strong>Next</strong><span>Merge the v0.13 decision memo layer back into the multi-motion planning canvas.</span></div>
     </div>
-    <footer>Design revenue teams with confidence before you hire.</footer>
+    <footer>The madness is allowed. The chaos is not.</footer>
   </main>
 </body>
 </html>
