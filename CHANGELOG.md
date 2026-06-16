@@ -2,6 +2,29 @@
 
 All notable changes to the Revenue Team Economics Simulator will be documented here.
 
+## [0.13.0] — 2026-06-17
+
+### Added
+
+- New `simulator-v13.html` prototype focused on a boardroom-grade decision memo workspace.
+- Etherveil Forge visual treatment using dark parchment, gold, rune/codex styling, and a stronger artifact-like interface.
+- Single-motion economics model for rapid scenario testing.
+- Live calculations for customers/month, monthly revenue, CAC, payback, LTV:CAC, monthly profit, readiness, and plan quality.
+- Auto-generated decision memo that can be copied or downloaded as a `.txt` file.
+- Sample scenario loader for quick demos.
+- Updated public index page to point to the v0.13 workspace while preserving access to the v0.12 planning canvas.
+
+### Status
+
+Implemented on `v0-13-decision-memo-workspace` for preview testing. This version explores the next product direction: turning model outputs into a clear decision artifact that founders, operators, consultants, or stakeholders can actually use.
+
+### Next
+
+- Merge the v0.13 decision memo layer back into the existing v0.12 multi-motion planning canvas.
+- Add multi-motion memo generation.
+- Add branded report preview/export flow.
+- Connect scenario save/load logic to memo outputs.
+
 ## [0.12.0] — 2026-06-14
 
 ### Added
