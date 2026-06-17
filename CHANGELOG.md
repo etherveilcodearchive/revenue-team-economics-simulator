@@ -2,6 +2,41 @@
 
 All notable changes to the Revenue Team Economics Simulator will be documented here.
 
+## [0.15.0] — 2026-06-18
+
+### Added
+
+- New `simulator-v15.html` prototype focused on a guided visual planning flow.
+- Replaced the dense v0.14 dashboard approach with a clearer six-step journey:
+  - Context
+  - Motions
+  - Analysis
+  - Best plan
+  - AI analyst
+  - Output
+- Added stable bar-based visualizations instead of fragile custom SVG charts.
+- Added motion profit, CAC, funnel flow, scenario comparison, and motion audit views.
+- Added best-plan selection across conservative, base, and aggressive scenarios.
+- Added final plan output with local save, recall, copy, and text export actions.
+- Kept the AI Decision Analyst as a mocked shell until backend integration is ready.
+- Updated public landing page to route users to v0.15 first while preserving v0.14, v0.13, and v0.12 access.
+
+### Product direction
+
+v0.15 corrects the first v0.14 review issue. The product should not simply show a dashboard; it should guide the user through a logical planning path and end with a best plan that can be preserved, exported, shared, and eventually recalled through the backend.
+
+### Status
+
+Implemented on `v0-15-guided-visual-flow` for preview testing. This is still frontend-only and backend-ready.
+
+### Next
+
+- Review v0.15 in-browser for layout, readability, and flow.
+- Improve chart polish and mobile behavior.
+- Reintroduce stronger v0.12 controls only where they support the journey.
+- Prepare a Codex implementation brief for refactor into proper frontend components.
+- Define the backend AI payload contract separately.
+
 ## [0.14.0] — 2026-06-18
 
 ### Added
