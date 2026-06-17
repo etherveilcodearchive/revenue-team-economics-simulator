@@ -2,6 +2,42 @@
 
 All notable changes to the Revenue Team Economics Simulator will be documented here.
 
+## [0.14.0] — 2026-06-18
+
+### Added
+
+- New `simulator-v14.html` prototype focused on a visual planning dashboard and embedded AI Decision Analyst shell.
+- Sticky executive strip retained as the only high-level card layer: readiness, blended CAC, payback, monthly profit, and best motion.
+- Visual dashboard modules for:
+  - Revenue vs cost trend
+  - Motion economics by acquisition motion
+  - Funnel flow from leads to meetings to customers
+  - Motion mix by customer contribution
+  - Conservative / base / aggressive scenario comparison
+- Controlled AI Decision Analyst shell with bounded actions:
+  - Explain this plan
+  - Diagnose risk
+  - Improve economics
+  - Generate decision memo
+- Deterministic mock AI output to validate product UX before connecting a backend endpoint.
+- Landing page updated to route users to the v0.14 visual dashboard while preserving access to v0.13 and v0.12.
+
+### Product direction
+
+v0.14 establishes the separation between the deterministic simulator and the AI interpretation layer. The simulator UI should show facts, numbers, relationships, and charts. Strategic interpretation, diagnosis, recommendations, and decision narrative should belong to the AI Decision Analyst layer.
+
+### Status
+
+Implemented on `v0-14-visual-dashboard-ai-shell` for preview testing. This version is a frontend/product-experience prototype and is still backend-ready rather than backend-connected.
+
+### Next
+
+- Refine chart quality, chart labels, and mobile visual behavior.
+- Merge stronger v0.12 planning controls into the v0.14 visual dashboard.
+- Define the backend AI payload contract.
+- Connect the first real AI action through a Cloudflare Worker endpoint.
+- Add report/export flow once the visual dashboard is stable.
+
 ## [0.13.0] — 2026-06-17
 
 ### Added
