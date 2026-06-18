@@ -2,7 +2,27 @@
 
 All notable changes to the Revenue Team Economics Simulator will be documented here.
 
-## [0.16.1] — 2026-06-19
+## [0.17.0] - 2026-06-19
+
+### UX foundation
+
+- Added `public/simulator-v17.html` as a frontend-only UX foundation preview on `preview-v017-ux-foundation`.
+- Added `public/assets/v17/styles.css` for a lighter design system, clearer app shell, tighter section rhythm, and mobile-safe layout rules.
+- Reorganized the v0.17 simulator into the approved planning path: Context, Revenue Motions, Assumptions, Economics, Scenario Comparison, Plan Selection, AI Analyst, and Final Output.
+- Added visible v0.17 build/version visibility for EV-PROD-001, branch `preview-v017-ux-foundation`, and branch-head commit tracking.
+- Updated `public/index.html` and `public/build-info.html` so the v0.17 preview is the active review route while preserving v0.16, v0.15, v0.14, v0.13, and v0.12 links.
+- Improved the exported final plan artifact language so it reads more like an executive decision record while preserving the v0.16 calculation and state flow.
+
+### Product boundary
+
+- This build fixes the skeleton first. It does not add backend AI, new scenario math, new SaaS scope, production deployment, or changes to `main`.
+- v0.16 calculation logic, local save/recall, scenario controls, copy/export flow, and mocked AI analyst behavior remain the foundation.
+
+### Next
+
+- Use v0.18 for focused final-output polish, artifact packaging, and copy/export/share confidence before starting any backend AI endpoint.
+
+## [0.16.1] - 2026-06-19
 
 ### Review hardening
 
