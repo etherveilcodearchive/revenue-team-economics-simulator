@@ -6,8 +6,46 @@
   <title>Revenue Motion Planner · v0.16</title>
   <meta name="description" content="A componentized guided revenue planning workspace for comparing motions, scenarios, and final plan outputs." />
   <link rel="stylesheet" href="/assets/v16/styles.css" />
+  <style>
+    .build-badge {
+      position: fixed;
+      right: 16px;
+      bottom: 16px;
+      z-index: 80;
+      width: min(300px, calc(100vw - 32px));
+      border: 1px solid rgba(222, 210, 191, 0.92);
+      border-radius: 14px;
+      background: rgba(255, 253, 248, 0.96);
+      box-shadow: 0 16px 44px rgba(55, 43, 24, 0.16);
+      color: #17130d;
+      padding: 12px 14px;
+      backdrop-filter: blur(14px);
+    }
+    .build-badge span {
+      color: #9b6d2e;
+      display: block;
+      font-size: 0.7rem;
+      font-weight: 950;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+    .build-badge strong { display: block; font-size: 0.96rem; margin: 4px 0; }
+    .build-badge code { display: block; font: inherit; font-size: 0.8rem; line-height: 1.45; color: #6f6658; }
+    .build-badge a { color: #20372f; font-weight: 900; }
+    @media (max-width: 760px) {
+      .build-badge { position: static; width: auto; margin: 14px 16px 0; }
+    }
+  </style>
 </head>
 <body>
+  <aside class="build-badge" aria-label="Build version">
+    <span>EV-PROD-001 · v0.16</span>
+    <strong>Review preview</strong>
+    <code>branch: preview-v016</code>
+    <code>commit: b0139f2</code>
+    <a href="/build-info.html">Build info</a>
+  </aside>
+
   <header class="app-header">
     <div class="shell header-grid">
       <div class="brand">
@@ -16,6 +54,7 @@
       </div>
       <nav class="top-links" aria-label="Version navigation">
         <a href="/">Gate</a>
+        <a href="/build-info.html">Build info</a>
         <a href="/simulator-v15.html">v0.15</a>
         <a href="/simulator-v14.html">v0.14</a>
         <a href="/simulator-v13.html">v0.13</a>
