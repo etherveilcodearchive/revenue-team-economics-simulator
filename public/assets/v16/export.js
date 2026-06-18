@@ -4,40 +4,50 @@ export function buildFinalPlanMarkdown(snapshot, formatMoney) {
   const { workspace, plan, activeMotions, selectedScenario } = snapshot;
   const analysis = selectedScenario.analysis;
   const bestMotion = analysis.bestMotion?.name || "Not available";
+  const readiness = readinessLabel(analysis.readinessSignal);
 
-  return `# Revenue Motion Plan
+  return `# Revenue Motion Decision Record
 
+Product: EV-PROD-001 - Revenue Team Economics Simulator
 Company: ${plan.company}
 Workspace: ${workspace.name}
 Planning period: ${plan.period}
 Strategic question: ${plan.question}
 
-## Selected Plan
+## Decision Summary
 
-Scenario: ${selectedScenario.name}
-Readiness: ${readinessLabel(analysis.readinessSignal)} (${analysis.readinessScore}/100)
-Best motion by profit: ${bestMotion}
+Selected scenario: ${selectedScenario.name}
+Readiness: ${readiness} (${analysis.readinessScore}/100)
+Recommended leading motion: ${bestMotion}
+Monthly profit: ${formatMoney(analysis.profit)}
+Blended CAC: ${formatMoney(analysis.cac)}
+Payback period: ${analysis.payback.toFixed(1)} months
+LTV:CAC: ${analysis.ltvCac.toFixed(1)}x
 
 ## Portfolio Economics
 
-- Customers: ${analysis.customers.toFixed(1)}
-- Revenue: ${formatMoney(analysis.revenue)}
-- Total cost: ${formatMoney(analysis.totalCost)}
+- Customers per month: ${analysis.customers.toFixed(1)}
+- Monthly revenue: ${formatMoney(analysis.revenue)}
+- Monthly cost: ${formatMoney(analysis.totalCost)}
+- Monthly profit: ${formatMoney(analysis.profit)}
 - Blended CAC: ${formatMoney(analysis.cac)}
 - Payback: ${analysis.payback.toFixed(1)} months
 - LTV:CAC: ${analysis.ltvCac.toFixed(1)}x
-- Profit: ${formatMoney(analysis.profit)}
 
-## Active Motions
+## Motion Mix
 
 ${activeMotions.map((motion) => {
   const result = analysis.motionResults.find((row) => row.id === motion.id);
-  return `- ${motion.name}: ${result.customers.toFixed(1)} customers, ${formatMoney(result.cac)} CAC, ${formatMoney(result.profit)} profit`;
+  return `- ${motion.name}: ${result.customers.toFixed(1)} customers/month, ${formatMoney(result.revenue)} revenue, ${formatMoney(result.cost)} cost, ${formatMoney(result.cac)} CAC, ${formatMoney(result.profit)} profit`;
 }).join("\n")}
+
+## Decision Boundary
+
+This artifact preserves the selected plan and the deterministic economics used to compare options. Interpretation, diagnosis, recommendations, and stakeholder narrative should be generated through the AI Decision Analyst after the economics are reviewed.
 
 ## Preservation Note
 
-This is a local v0.16 plan artifact. Future backend save/share links should persist the workspace, plan, scenario, assumptions, analysis, decision memo, and export metadata.`;
+This is a local v0.17 preview artifact. Future backend save/share links should persist the workspace, plan, scenario, assumptions, analysis, decision memo, and export metadata.`;
 }
 
 export async function copyText(text) {
