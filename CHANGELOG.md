@@ -2,18 +2,39 @@
 
 All notable changes to the Revenue Team Economics Simulator will be documented here.
 
+## [0.16.0] — 2026-06-18
+
+### Added
+
+- New `simulator-v16.html` static preview built from the v0.15 guided flow direction.
+- Split v0.16 frontend into plain HTML/CSS/JS modules under `public/assets/v16/`.
+- Added a clearer eight-step planning journey: Context, Motions, Assumptions, Economics, Compare, Select, AI Analyst, Output.
+- Added stable HTML/CSS visual components for motion profit, CAC by motion, funnel flow, scenario comparison, and final-plan summary.
+- Added backend-ready docs: `docs/plan-object-model.md` and `docs/ai-payload-contract.md`.
+- Improved final plan output as a copyable/exportable Markdown artifact.
+- Saved plans now store a structured snapshot containing workspace, plan, motion state, selected scenario, active motions, analysis, and analyst output.
+- Updated the landing page to route branch previews to v0.16 first while preserving older versions.
+
+### Product direction
+
+v0.16 keeps the product as a static Cloudflare Pages preview while moving the codebase away from one-off prototype files. The deterministic simulator still shows facts, numbers, relationships, charts, and calculated outputs. The mocked AI Decision Analyst remains the place for interpretation, diagnosis, recommendations, and decision narrative.
+
+### Status
+
+Implemented on `v0-16-componentized-guided-flow` for preview testing. Production branch `main` remains unchanged.
+
+### Next
+
+- Verify v0.16 in the Cloudflare branch preview.
+- Review UX polish, mobile behavior, and final artifact quality.
+- Decide the next backend step after frontend review.
+
 ## [0.15.0] — 2026-06-18
 
 ### Added
 
 - New `simulator-v15.html` prototype focused on a guided visual planning flow.
-- Replaced the dense v0.14 dashboard approach with a clearer six-step journey:
-  - Context
-  - Motions
-  - Analysis
-  - Best plan
-  - AI analyst
-  - Output
+- Replaced the dense v0.14 dashboard approach with a clearer six-step journey.
 - Added stable bar-based visualizations instead of fragile custom SVG charts.
 - Added motion profit, CAC, funnel flow, scenario comparison, and motion audit views.
 - Added best-plan selection across conservative, base, and aggressive scenarios.
@@ -23,7 +44,7 @@ All notable changes to the Revenue Team Economics Simulator will be documented h
 
 ### Product direction
 
-v0.15 corrects the first v0.14 review issue. The product should not simply show a dashboard; it should guide the user through a logical planning path and end with a best plan that can be preserved, exported, shared, and eventually recalled through the backend.
+v0.15 corrects the first v0.14 review issue. The product should guide the user through a logical planning path and end with a best plan that can be preserved, exported, shared, and eventually recalled through the backend.
 
 ### Status
 
@@ -42,130 +63,73 @@ Implemented on `v0-15-guided-visual-flow` for preview testing. This is still fro
 ### Added
 
 - New `simulator-v14.html` prototype focused on a visual planning dashboard and embedded AI Decision Analyst shell.
-- Sticky executive strip retained as the only high-level card layer: readiness, blended CAC, payback, monthly profit, and best motion.
-- Visual dashboard modules for:
-  - Revenue vs cost trend
-  - Motion economics by acquisition motion
-  - Funnel flow from leads to meetings to customers
-  - Motion mix by customer contribution
-  - Conservative / base / aggressive scenario comparison
-- Controlled AI Decision Analyst shell with bounded actions:
-  - Explain this plan
-  - Diagnose risk
-  - Improve economics
-  - Generate decision memo
+- Sticky executive strip retained as the only high-level card layer.
+- Visual dashboard modules for revenue vs cost trend, motion economics, funnel flow, motion mix, and scenario comparison.
+- Controlled AI Decision Analyst shell with bounded actions.
 - Deterministic mock AI output to validate product UX before connecting a backend endpoint.
 - Landing page updated to route users to the v0.14 visual dashboard while preserving access to v0.13 and v0.12.
 
 ### Product direction
 
-v0.14 establishes the separation between the deterministic simulator and the AI interpretation layer. The simulator UI should show facts, numbers, relationships, and charts. Strategic interpretation, diagnosis, recommendations, and decision narrative should belong to the AI Decision Analyst layer.
+v0.14 establishes the separation between the deterministic simulator and the AI interpretation layer.
 
 ### Status
 
-Implemented on `v0-14-visual-dashboard-ai-shell` for preview testing. This version is a frontend/product-experience prototype and is still backend-ready rather than backend-connected.
-
-### Next
-
-- Refine chart quality, chart labels, and mobile visual behavior.
-- Merge stronger v0.12 planning controls into the v0.14 visual dashboard.
-- Define the backend AI payload contract.
-- Connect the first real AI action through a Cloudflare Worker endpoint.
-- Add report/export flow once the visual dashboard is stable.
+Implemented on `v0-14-visual-dashboard-ai-shell` for preview testing.
 
 ## [0.13.0] — 2026-06-17
 
 ### Added
 
 - New `simulator-v13.html` prototype focused on a boardroom-grade decision memo workspace.
-- Etherveil Forge visual treatment using dark parchment, gold, rune/codex styling, and a stronger artifact-like interface.
-- Single-motion economics model for rapid scenario testing.
-- Live calculations for customers/month, monthly revenue, CAC, payback, LTV:CAC, monthly profit, readiness, and plan quality.
-- Auto-generated decision memo that can be copied or downloaded as a `.txt` file.
-- Sample scenario loader for quick demos.
-- Updated public index page to point to the v0.13 workspace while preserving access to the v0.12 planning canvas.
+- Stronger final artifact concept through a decision memo destination.
+- Auto-generated decision memo that can be copied or downloaded.
 
 ### Status
 
-Implemented on `v0-13-decision-memo-workspace` for preview testing. This version explores the next product direction: turning model outputs into a clear decision artifact that founders, operators, consultants, or stakeholders can actually use.
-
-### Next
-
-- Merge the v0.13 decision memo layer back into the existing v0.12 multi-motion planning canvas.
-- Add multi-motion memo generation.
-- Add branded report preview/export flow.
-- Connect scenario save/load logic to memo outputs.
+Implemented on `v0-13-decision-memo-workspace` for preview testing.
 
 ## [0.12.0] — 2026-06-14
 
 ### Added
 
-- Planning Canvas UX that keeps all sections in one continuous workspace instead of switching step pages.
-- Scroll-to-section navigation for Setup, Motions, Inputs, Decision, and Reports.
-- Sticky decision strip showing readiness, CAC, payback, profit, and best motion while users edit assumptions.
-- Collapsible planning sections with summary text for completed areas.
-- Planning mode selector: Quick, Detailed, and Consultant.
-- Plan quality meter: Draft, Review-ready, and Share-ready states.
-- Guided help tooltips using question-mark helper icons on key inputs, outputs, decisions, and motion assumptions.
-- Explainable “Why this result?” decision panel with key drivers.
-- Tooltip-ready motion field descriptions for outbound, inbound, paid acquisition, partner/referral, and agency/consulting motions.
+- Planning Canvas UX in one continuous workspace.
+- Sticky decision strip and guided help tooltips.
+- Planning mode selector, plan quality meter, and explainable decision panel.
 
 ### Status
 
-Implemented on `v0-12-planning-canvas-guided-help` for preview testing. This version makes the product feel lighter, more explainable, and less like a long wizard.
+Implemented on `v0-12-planning-canvas-guided-help` for preview testing.
 
 ## [0.11.0] — 2026-06-14
 
 ### Added
 
-- Save Plan modal with backend-ready save options: new plan, new scenario, or new version.
-- Plan metadata fields: description, visibility, and status.
-- Share Center modal with report link, email invite, stakeholder summary, and role concepts.
-- Report Builder modal with report template selector and section toggles.
-- Report templates for Executive Brief, Client Strategy Report, Manager Review, Investor GTM Snapshot, Board Summary, and Internal Planning Memo.
-- Company logo upload and local logo preview.
-- Brand accent color setting for future branded report exports.
-- Confidentiality label for reports.
-- Export Data Backup renamed and repositioned as an advanced/backup action instead of primary sharing.
-- Email draft flow using mailto for early prototype sharing.
+- Save Plan modal, Share Center modal, and Report Builder modal.
+- Report templates, logo upload, brand accent color, and confidentiality label.
 
 ### Status
 
-Implemented on `v0-11-save-share-report-builder` for preview testing. This version refines the save, share, and report workflows around the hosted backend product vision.
+Implemented on `v0-11-save-share-report-builder` for preview testing.
 
 ## [0.10.0] — 2026-06-14
 
 ### Added
 
 - Multi-motion guided planning flow.
-- Minimal premium visual system using warm paper, graphite, bronze, and deep green tones.
-- Step-based process: setup, goal, active motions, motion inputs, shared costs, decision review, and reports.
-- Multi-select acquisition motions instead of single GTM motion selection.
-- Motion-specific mini-models for outbound, inbound, paid acquisition, partner/referral, and agency/consulting.
-- Motion-level economics: customers, revenue, cost, CAC, payback, LTV:CAC, and profit.
-- Portfolio-level blended economics across all selected motions.
-- Shared cost and overhead layer applied at portfolio level.
-- Motion mix visualization by customer contribution.
-- Decision engine that identifies best and weakest active motion.
-- Portfolio scenario save/load and share-link support.
-- Multi-motion report generation and download.
+- Motion-specific mini-models and portfolio-level blended economics.
+- Scenario save/load and multi-motion report generation.
 
 ### Status
 
-Implemented on `v0-10-multi-motion-flow` for preview testing. This version reframes the product around realistic mixed acquisition motions instead of forcing a single sales motion.
+Implemented on `v0-10-multi-motion-flow` for preview testing.
 
 ## [0.9.0] — 2026-06-14
 
 ### Added
 
-- Workspace-based planning UX built around Workspace → Model → Scenarios → Decisions → Reports.
+- Workspace-based planning UX built around Workspace, Model, Scenarios, Decisions, and Reports.
 - Backend-ready object framing while still running as a static prototype.
-- Workspace dashboard with active model, scale readiness, best next move, and scenario count.
-- Guided model builder that organizes profile, planning goal, GTM motion, team architecture, channel economics, funnel, and targets.
-- Decision engine section with readiness score, CAC, payback, profit, bottlenecks, and recommended actions.
-- Scenario library treated as planning objects instead of raw browser states.
-- Reports and sharing section aligned to a future hosted/collaborative product.
-- Sidebar command-center navigation for a more premium 2026 planning workflow.
 
 ### Status
 
@@ -176,14 +140,7 @@ Implemented on `v0-9-workspace-planning-ux` for preview testing.
 ### Added
 
 - Static sharing toolkit without requiring a backend.
-- Export current scenario as JSON.
-- Export all saved scenarios as a scenario pack.
-- Import scenario JSON and scenario pack JSON.
-- Copy encoded share link for current scenario state.
-- Copy executive summary to clipboard.
-- Report mode with generated client/manager-ready text report.
-- Copy report and download report actions.
-- Region / market changed from free text to structured dropdown.
+- JSON import/export, share links, executive summary, report mode, and download actions.
 
 ### Status
 
