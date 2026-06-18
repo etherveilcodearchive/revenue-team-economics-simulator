@@ -2,6 +2,19 @@
 
 All notable changes to the Revenue Team Economics Simulator will be documented here.
 
+## [0.16.1] — 2026-06-19
+
+### Review hardening
+
+- Added a visible v0.16 review build badge to `public/simulator-v16.html` showing product ID, version, branch `preview-v016`, and commit `b0139f2`.
+- Added `public/build-info.html` as a lightweight build visibility page for product ID, version, branch, commit, build purpose, route links, and current status.
+- Linked the build-info page from the public gate while preserving access to v0.16, v0.15, v0.14, v0.13, and v0.12 routes.
+- Kept the build frontend-only. Backend AI implementation has not started, and production branch `main` remains untouched.
+
+### Next
+
+- Use v0.17 for approved UX polish, final artifact quality, and packaging readiness before any backend AI implementation begins.
+
 ## [0.16.0] — 2026-06-18
 
 ### Added
