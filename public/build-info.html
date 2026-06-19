@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>EV-PROD-001 - v0.17 Build Info</title>
-  <meta name="description" content="Build information for the EV-PROD-001 v0.17 UX foundation preview." />
+  <title>EV-PROD-001 - v0.18 Build Info</title>
+  <meta name="description" content="Build information for the EV-PROD-001 v0.18 guided backend preview." />
   <style>
     :root { --bg:#f6f2e9; --paper:#fffdf8; --ink:#17130d; --muted:#6f6658; --line:#ded2bf; --deep:#20372f; --gold:#9b6d2e; }
     * { box-sizing: border-box; }
@@ -28,19 +28,22 @@
   <main>
     <section class="panel">
       <div class="eyebrow">EV-PROD-001 - Build Info</div>
-      <h1>v0.17 UX foundation preview</h1>
-      <p>This page keeps the active review build explicit for product, GitHub, Cloudflare, and preservation checks.</p>
+      <h1>v0.18 guided backend preview</h1>
+      <p>This page keeps the active branch preview explicit for product, GitHub, Cloudflare, and preservation checks.</p>
       <dl>
         <dt>Product ID</dt><dd>EV-PROD-001</dd>
-        <dt>Version</dt><dd>v0.17</dd>
-        <dt>Branch</dt><dd>preview-v017-ux-foundation</dd>
-        <dt>Commit</dt><dd>Branch head. Final hash recorded after publish and deployment verification.</dd>
-        <dt>Build purpose</dt><dd>UX foundation and final artifact quality pass: clearer skeleton, clearer journey, separated inputs and outputs, and a stronger final plan artifact.</dd>
-        <dt>Current status</dt><dd>Frontend-only review preview. v0.16 logic preserved. Backend AI implementation has not started. Production main remains untouched.</dd>
+        <dt>Version</dt><dd>v0.18</dd>
+        <dt>Branch</dt><dd>preview-v018-guided-backend</dd>
+        <dt>Commit</dt><dd>Branch head. Final hash recorded after deployment verification.</dd>
+        <dt>Build purpose</dt><dd>Guided product flow plus Cloudflare Pages Functions backend foundation.</dd>
+        <dt>API routes</dt><dd>GET /api/health, POST /api/ai/analyze</dd>
+        <dt>Current status</dt><dd>Frontend preview with deterministic backend analyst mock. No real external AI, no secrets, no authentication, and no production merge.</dd>
       </dl>
       <div class="routes" aria-label="Route links">
-        <a class="button primary" href="/simulator-v17.html">v0.17 simulator</a>
+        <a class="button primary" href="/simulator-v18.html">v0.18 simulator</a>
+        <a class="button" href="/api/health">API health</a>
         <a class="button" href="/">Gate</a>
+        <a class="button" href="/simulator-v17.html">v0.17</a>
         <a class="button" href="/simulator-v16.html">v0.16</a>
         <a class="button" href="/simulator-v15.html">v0.15</a>
         <a class="button" href="/simulator-v14.html">v0.14</a>
