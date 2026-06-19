@@ -2,6 +2,35 @@
 
 All notable changes to the Revenue Team Economics Simulator will be documented here.
 
+## [0.18.0] - 2026-06-19
+
+### Guided product flow
+
+- Added `public/simulator-v18.html` as the active branch-preview route on `preview-v018-guided-backend`.
+- Added `public/assets/v18/app.js` and `public/assets/v18/styles.css` for a more intentional guided planning workspace.
+- Reorganized the experience around a visible progress path: Context, Motions, Assumptions, Economics, Compare, Select, Analyst, and Artifact.
+- Added a planning progress pulse and live decision snapshot so the user can see where they are in the decision journey.
+- Preserved v0.16 calculation, state, chart, component, storage, and export modules rather than replacing the deterministic engine.
+
+### Backend foundation
+
+- Added Cloudflare Pages Functions under `functions/api/`:
+  - `GET /api/health`
+  - `POST /api/ai/analyze`
+- Added visible backend connectivity status in the v0.18 frontend.
+- Routed analyst actions through the deterministic backend mock when available, with a local deterministic fallback if the API is unavailable.
+- Kept the analyst layer explicitly mocked. No real external AI, paid API provider, secrets, or authentication were added.
+
+### Preservation
+
+- Updated `public/index.html` to route the branch preview to v0.18 first while preserving older prototype links.
+- Updated `public/build-info.html` with v0.18 branch, route, API, and boundary information.
+- Production branch `main` remains untouched.
+
+### Next
+
+- Use v0.19 to harden the backend contract, improve true mobile QA, and decide whether the next approved backend step is plan persistence, report export, or a real AI endpoint boundary.
+
 ## [0.17.0] - 2026-06-19
 
 ### UX foundation
@@ -148,7 +177,7 @@ Implemented on `v0-14-visual-dashboard-ai-shell` for preview testing. This versi
 - Refine chart quality, chart labels, and mobile visual behavior.
 - Merge stronger v0.12 planning controls into the v0.14 visual dashboard.
 - Define the backend AI payload contract.
-- Connect the first real AI action through a Cloudflare Worker endpoint.
+- Connect the first real AI action through a backend endpoint.
 - Add report/export flow once the visual dashboard is stable.
 
 ## [0.13.0] — 2026-06-17
