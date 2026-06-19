@@ -3,15 +3,15 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>EV-PROD-001 - v0.19 Build Info</title>
-  <meta name="description" content="Build information for the EV-PROD-001 v0.19 workspace UX preview." />
+  <title>EV-PROD-001 - v0.20 Build Info</title>
+  <meta name="description" content="Build information for the EV-PROD-001 v0.20 premium interface and profitability readiness QA preview." />
   <style>
-    :root { --bg:#eef1ee; --paper:#fff; --ink:#141a17; --muted:#66706a; --line:#d9dfd9; --deep:#18241f; --gold:#94713a; }
+    :root { --bg:#f4f5f2; --paper:#fff; --ink:#151916; --muted:#626b64; --line:#dde2dc; --deep:#17231d; --gold:#8a6c38; }
     * { box-sizing: border-box; }
     body { margin:0; background:var(--bg); color:var(--ink); font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; min-height:100vh; }
     main { width:min(980px,100%); margin:0 auto; padding:clamp(24px,5vw,64px); }
-    .panel { background:var(--paper); border:1px solid var(--line); border-radius:8px; box-shadow:0 20px 60px rgba(25,36,31,.1); padding:clamp(22px,4vw,38px); }
-    .eyebrow { color:var(--gold); font-size:.76rem; font-weight:950; letter-spacing:.12em; text-transform:uppercase; }
+    .panel { background:var(--paper); border:1px solid var(--line); border-radius:8px; padding:clamp(22px,4vw,38px); }
+    .eyebrow { color:var(--gold); font-size:.76rem; font-weight:950; letter-spacing:.1em; text-transform:uppercase; }
     h1 { font-size:clamp(2.1rem,6vw,4.4rem); line-height:.98; letter-spacing:0; margin:10px 0 18px; }
     p { color:var(--muted); line-height:1.6; }
     dl { display:grid; grid-template-columns:180px 1fr; gap:12px 18px; margin:28px 0; }
@@ -28,22 +28,24 @@
   <main>
     <section class="panel">
       <div class="eyebrow">EV-PROD-001 - Build Info</div>
-      <h1>v0.19 workspace UX rebuild</h1>
+      <h1>v0.20 premium interface restraint + visual logic QA</h1>
       <p>This page keeps the active branch preview explicit for product, GitHub, Cloudflare, and preservation checks.</p>
       <dl>
         <dt>Product ID</dt><dd>EV-PROD-001</dd>
-        <dt>Version</dt><dd>v0.19</dd>
-        <dt>Branch</dt><dd>preview-v019-workspace-ux</dd>
+        <dt>Version</dt><dd>v0.20</dd>
+        <dt>Branch</dt><dd>preview-v020-premium-ui-qa</dd>
         <dt>Commit</dt><dd>Final branch head recorded in Notion and completion report.</dd>
-        <dt>Build purpose</dt><dd>Workspace UX rebuild: module rail, simulator canvas, decision cockpit, scenario command center, analyst mock panel, and final artifact mode.</dd>
+        <dt>Build purpose</dt><dd>Remove visual noise, create more space, replace misleading visual indicators, and enforce profitability-gated readiness.</dd>
+        <dt>Readiness rule</dt><dd>Green requires positive total profit, acceptable payback, reasonable LTV:CAC, and at least one viable motion. Loss-making plans cannot show green readiness.</dd>
         <dt>API routes</dt><dd>GET /api/health, GET /api/ai/analyze, POST /api/ai/analyze</dd>
         <dt>Current status</dt><dd>Branch preview with deterministic backend analyst mock. No real external AI, no secrets, no authentication, no database, and no production merge.</dd>
       </dl>
       <div class="routes" aria-label="Route links">
-        <a class="button primary" href="/simulator-v19.html">v0.19 simulator</a>
+        <a class="button primary" href="/simulator-v20.html">v0.20 simulator</a>
         <a class="button" href="/api/health">API health</a>
         <a class="button" href="/api/ai/analyze">Analyst endpoint</a>
         <a class="button" href="/">Gate</a>
+        <a class="button" href="/simulator-v19.html">v0.19</a>
         <a class="button" href="/simulator-v18.html">v0.18</a>
         <a class="button" href="/simulator-v17.html">v0.17</a>
         <a class="button" href="/simulator-v16.html">v0.16</a>
