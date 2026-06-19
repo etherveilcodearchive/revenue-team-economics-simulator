@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>EV-PROD-001 Concept - Strategy Decision Cockpit</title>
+  <link rel="stylesheet" href="/assets/v21/concepts.css" />
+</head>
+<body>
+  <header class="concept-top">
+    <a class="brand" href="/"><span>EV-PROD-001 v0.21 concept</span><strong>Strategy Decision Cockpit</strong></a>
+    <nav class="route-pills"><a class="pill" href="/concept-command-center.html">Command</a><a class="pill" href="/concept-financial-lab.html">Lab</a><a class="pill active" href="/concept-decision-cockpit.html">Cockpit</a><a class="pill" href="/simulator-v20.html">v0.20</a></nav>
+  </header>
+  <main class="concept-shell">
+    <section class="concept-hero">
+      <div><span class="concept-badge">Static UX exploration - not production</span><h1>Make the selected plan the product's central object.</h1><p class="hero-copy">This direction feels less like a report and more like an interactive strategy tool. The selected plan sits in the middle, while motion modules, risks, and artifacts orbit around it.</p></div>
+      <aside class="note"><p class="note-title">Navigation model</p><p>Scenario switcher and motion modules surround the plan object. The final artifact lives in a drawer/focus area once a plan is selected.</p></aside>
+    </section>
+    <section class="cockpit-layout">
+      <aside class="console panel-pad"><p class="eyebrow">Scenario switcher</p><h2>Choose posture</h2><div class="module-list" style="margin-top:16px"><div class="module"><strong>Protect margin</strong><small>Lower volume, safest payback</small></div><div class="module" style="border-color:rgba(32,118,84,.55)"><strong>Balanced growth</strong><small>Selected central plan</small></div><div class="module"><strong>Capture demand</strong><small>Higher customer count, CAC risk</small></div></div><div class="drawer"><p class="label">Assumption focus</p><div class="field-grid" style="margin-top:10px"><label>Motion mix<select><option>Inbound-led blend</option></select></label><label>Budget pressure<input value="Moderate" /></label></div></div></aside>
+      <section class="orbit">
+        <div class="module-list"><article class="module"><strong>Inbound engine</strong><small>Primary viable motion. Low CAC, high confidence.</small></article><article class="module"><strong>Outbound assist</strong><small>Useful for named accounts. Needs conversion discipline.</small></article><article class="module"><strong>Paid demand</strong><small>Optional acceleration lever. Do not scale before CAC review.</small></article></div>
+        <article class="center-object"><p class="eyebrow">Selected plan object</p><h2>Balanced Growth Plan</h2><p>The current plan is profitable, but not an automatic scale decision. It should be preserved as a review-ready plan with paid acquisition risk called out.</p><div class="object-metrics"><div><span class="label">Readiness</span><strong>Review-ready</strong></div><div><span class="label">Profit</span><strong>$26.9k</strong></div><div><span class="label">Payback</span><strong>5.3 mo</strong></div><div><span class="label">LTV:CAC</span><strong>3.4x</strong></div></div><div class="scenario-meta"><span>Plan selected</span><span>Artifact draft available</span><span>Analyst mock ready</span></div></article>
+        <aside class="cockpit panel-pad"><p class="eyebrow">Risk / readiness</p><span class="signal green">Profitability gate passed</span><div class="drawer"><p class="label">Interpretation approach</p><p>Simulator shows deterministic facts. Analyst layer explains why paid demand should remain constrained.</p></div><div class="drawer"><p class="label">User choices</p><div class="timeline"><div><b>1</b><span>Inspect central plan</span></div><div><b>2</b><span>Adjust motion modules</span></div><div><b>3</b><span>Switch scenario posture</span></div><div><b>4</b><span>Open artifact drawer</span></div></div></div></aside>
+      </section>
+      <aside class="memo panel-pad"><p class="eyebrow">Artifact drawer</p><h2>Decision record</h2><pre>Selected plan
+Balanced Growth Plan
+
+Deterministic readout
+Positive profit, acceptable payback, one motion requiring review.
+
+Analyst interpretation
+Demand quality appears sufficient, but paid acquisition should remain capped until CAC sensitivity is tested.
+
+Stakeholder narrative
+Approve the plan for operating review, not uncontrolled spend expansion.</pre></aside>
+    </section>
+    <section class="notes-grid"><article class="note"><p class="note-title">Optimizes for</p><p>A differentiated product feel where the plan is an object users manipulate and preserve.</p></article><article class="note"><p class="note-title">Why it may work</p><p>It best expresses the core promise: build the plan, compare the options, preserve the decision.</p></article><article class="note"><p class="note-title">Tradeoffs</p><p>Requires more careful interaction design and may be harder to explain on first load.</p></article><article class="note"><p class="note-title">Best buyer</p><p>Product-minded founders, operators, and advisors who want a strategy simulator rather than a spreadsheet replacement.</p></article></section>
+  </main>
+</body>
+</html>
