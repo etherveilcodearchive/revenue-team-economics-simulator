@@ -2,6 +2,38 @@
 
 All notable changes to the Revenue Team Economics Simulator will be documented here.
 
+## [0.19.0] - 2026-06-19
+
+### Workspace UX rebuild
+
+- Added `public/simulator-v19.html` as the active branch-preview route on `preview-v019-workspace-ux`.
+- Added `public/assets/v19/app.js` and `public/assets/v19/styles.css` for a full-width simulator workspace rather than another long stacked page.
+- Rebuilt the interaction model around a module rail, central simulator canvas, persistent decision cockpit, scenario command center, backend analyst panel, and final artifact mode.
+- Separated configuration from outputs so business context, motion selection, and assumptions live in an input console while calculated economics, scenario comparison, and the final plan live in distinct work areas.
+- Added a scenario matrix for at-a-glance comparison and direct scenario selection.
+- Added an always-visible decision cockpit with selected scenario, leading motion, deterministic warnings, and decision status.
+- Added a focused artifact view so the final decision record feels like the destination of the product rather than a buried page section.
+
+### Preserved from v0.18
+
+- Preserved the Cloudflare Pages Functions backend foundation:
+  - `GET /api/health`
+  - `GET /api/ai/analyze`
+  - `POST /api/ai/analyze`
+- Preserved deterministic mocked analyst behavior. No real external AI, paid API provider, secrets, authentication, or database persistence were added.
+- Preserved the v0.16 calculation, state, chart, component, storage, export, and AI payload modules as the simulator engine.
+- Preserved scenario switching, assumption updates, local save/recall, copy/export behavior, and older prototype routes.
+
+### Preservation
+
+- Updated `public/index.html` to route the branch preview to v0.19 first while preserving v0.18 through v0.12 links.
+- Updated `public/build-info.html` with v0.19 branch, route, API, and boundary information.
+- Production branch `main` remains untouched.
+
+### Next
+
+- Use v0.20 to review the workspace in live use, tighten mobile ergonomics, improve final artifact packaging, and decide whether the next approved backend step is persistent saved plans, richer export/share, or a real AI endpoint boundary.
+
 ## [0.18.0] - 2026-06-19
 
 ### Guided product flow
@@ -64,7 +96,7 @@ All notable changes to the Revenue Team Economics Simulator will be documented h
 
 - Use v0.17 for approved UX polish, final artifact quality, and packaging readiness before any backend AI implementation begins.
 
-## [0.16.0] — 2026-06-18
+## [0.16.0] - 2026-06-18
 
 ### Added
 
@@ -109,7 +141,7 @@ Implemented on `v0-16-componentized-guided-flow` for preview testing. Production
 - Review UX polish, mobile behavior, and final artifact quality.
 - Decide whether the next backend step should be a Cloudflare Pages Function or Worker for `POST /api/ai/analyze`.
 
-## [0.15.0] — 2026-06-18
+## [0.15.0] - 2026-06-18
 
 ### Added
 
@@ -144,7 +176,7 @@ Implemented on `v0-15-guided-visual-flow` for preview testing. This is still fro
 - Prepare a Codex implementation brief for refactor into proper frontend components.
 - Define the backend AI payload contract separately.
 
-## [0.14.0] — 2026-06-18
+## [0.14.0] - 2026-06-18
 
 ### Added
 
@@ -180,7 +212,7 @@ Implemented on `v0-14-visual-dashboard-ai-shell` for preview testing. This versi
 - Connect the first real AI action through a backend endpoint.
 - Add report/export flow once the visual dashboard is stable.
 
-## [0.13.0] — 2026-06-17
+## [0.13.0] - 2026-06-17
 
 ### Added
 
@@ -203,7 +235,7 @@ Implemented on `v0-13-decision-memo-workspace` for preview testing. This version
 - Add branded report preview/export flow.
 - Connect scenario save/load logic to memo outputs.
 
-## [0.12.0] — 2026-06-14
+## [0.12.0] - 2026-06-14
 
 ### Added
 
@@ -214,14 +246,14 @@ Implemented on `v0-13-decision-memo-workspace` for preview testing. This version
 - Planning mode selector: Quick, Detailed, and Consultant.
 - Plan quality meter: Draft, Review-ready, and Share-ready states.
 - Guided help tooltips using question-mark helper icons on key inputs, outputs, decisions, and motion assumptions.
-- Explainable “Why this result?” decision panel with key drivers.
+- Explainable "Why this result?" decision panel with key drivers.
 - Tooltip-ready motion field descriptions for outbound, inbound, paid acquisition, partner/referral, and agency/consulting motions.
 
 ### Status
 
 Implemented on `v0-12-planning-canvas-guided-help` for preview testing. This version makes the product feel lighter, more explainable, and less like a long wizard.
 
-## [0.11.0] — 2026-06-14
+## [0.11.0] - 2026-06-14
 
 ### Added
 
@@ -240,7 +272,7 @@ Implemented on `v0-12-planning-canvas-guided-help` for preview testing. This ver
 
 Implemented on `v0-11-save-share-report-builder` for preview testing. This version refines the save, share, and report workflows around the hosted backend product vision.
 
-## [0.10.0] — 2026-06-14
+## [0.10.0] - 2026-06-14
 
 ### Added
 
@@ -261,11 +293,11 @@ Implemented on `v0-11-save-share-report-builder` for preview testing. This versi
 
 Implemented on `v0-10-multi-motion-flow` for preview testing. This version reframes the product around realistic mixed acquisition motions instead of forcing a single sales motion.
 
-## [0.9.0] — 2026-06-14
+## [0.9.0] - 2026-06-14
 
 ### Added
 
-- Workspace-based planning UX built around Workspace → Model → Scenarios → Decisions → Reports.
+- Workspace-based planning UX built around Workspace -> Model -> Scenarios -> Decisions -> Reports.
 - Backend-ready object framing while still running as a static prototype.
 - Workspace dashboard with active model, scale readiness, best next move, and scenario count.
 - Guided model builder that organizes profile, planning goal, GTM motion, team architecture, channel economics, funnel, and targets.
@@ -278,7 +310,7 @@ Implemented on `v0-10-multi-motion-flow` for preview testing. This version refra
 
 Implemented on `v0-9-workspace-planning-ux` for preview testing.
 
-## [0.8.0] — 2026-06-14
+## [0.8.0] - 2026-06-14
 
 ### Added
 
