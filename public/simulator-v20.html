@@ -1,0 +1,225 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Revenue Planning Workspace - v0.20</title>
+  <meta name="description" content="EV-PROD-001 v0.20 premium interface restraint and profitability-gated readiness QA preview." />
+  <link rel="stylesheet" href="/assets/v20/styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a class="brand" href="/">
+        <span>EV-PROD-001</span>
+        <strong>Revenue Planning Workspace</strong>
+      </a>
+      <div class="top-actions" aria-label="Primary actions">
+        <button class="button primary" id="savePlan" type="button">Save</button>
+        <button class="button" id="copyPlan" type="button">Copy</button>
+        <button class="button" id="exportPlan" type="button">Export</button>
+      </div>
+      <nav class="route-links" aria-label="Prototype routes">
+        <a href="/build-info.html">Build info</a>
+        <a href="/simulator-v19.html">v0.19</a>
+        <a href="/simulator-v18.html">v0.18</a>
+        <a href="/simulator-v17.html">v0.17</a>
+        <a href="/simulator-v16.html">v0.16</a>
+        <a href="/simulator-v15.html">v0.15</a>
+        <a href="/simulator-v14.html">v0.14</a>
+        <a href="/simulator-v13.html">v0.13</a>
+        <a href="/simulator.html">v0.12</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="workspace-shell">
+    <section class="workspace-header" aria-label="Workspace overview">
+      <div class="hero-panel">
+        <div>
+          <p class="eyebrow">v0.20 premium interface restraint + visual logic QA</p>
+          <h1>Build the plan. Compare the options. Preserve the decision.</h1>
+          <p>A quieter planning workspace for configuring motions, reading deterministic economics, selecting a scenario, and producing the final decision record.</p>
+        </div>
+        <p class="workspace-pulse" id="workspacePulse">Preparing workspace...</p>
+      </div>
+      <aside class="status-panel" aria-label="Build and backend status">
+        <span class="backend-pill" id="backendStatus">Checking API</span>
+        <dl>
+          <dt>Product</dt><dd>EV-PROD-001</dd>
+          <dt>Version</dt><dd>v0.20</dd>
+          <dt>Branch</dt><dd>preview-v020-premium-ui-qa</dd>
+          <dt>Commit</dt><dd>final branch head</dd>
+          <dt>Backend</dt><dd id="backendDetail">Connecting to /api/health...</dd>
+        </dl>
+      </aside>
+    </section>
+
+    <section class="workspace-grid">
+      <aside class="module-rail" aria-label="Workspace modules">
+        <p class="rail-label">Planning path</p>
+        <div class="view-stack">
+          <button class="view-button active" type="button" data-view="configure">Configure<span>Context, motions, assumptions</span></button>
+          <button class="view-button" type="button" data-view="results">Economics<span>Facts, rankings, audit table</span></button>
+          <button class="view-button" type="button" data-view="compare">Compare<span>Scenario matrix and selection</span></button>
+          <button class="view-button" type="button" data-view="analyst">Analyst<span>Mock interpretation layer</span></button>
+          <button class="view-button" type="button" data-view="artifact">Artifact<span>Final plan output</span></button>
+        </div>
+        <div class="rail-footer"><p><strong id="activeMotionCount">0</strong> active motions in the current model.</p></div>
+      </aside>
+
+      <section class="canvas" aria-label="Simulator canvas">
+        <section class="canvas-panel active" data-panel="configure">
+          <div class="panel-head">
+            <div>
+              <p class="eyebrow">Decision context</p>
+              <h2>Set the model before reading the result.</h2>
+              <p>Inputs stay contained here. Outputs and interpretation live in later modules.</p>
+            </div>
+          </div>
+          <div class="panel-body control-grid">
+            <article class="control-card">
+              <h3>Business context</h3>
+              <div class="form-grid three">
+                <label>Company / client<input id="company" value="Acme Growth Co." /></label>
+                <label>Currency<select id="currency"><option value="$">USD $</option><option value="€">EUR €</option><option value="£">GBP £</option><option value="₨">PKR ₨</option><option value="د.إ">AED د.إ</option></select></label>
+                <label>Planning period<select id="period"><option>Monthly</option><option>Quarterly</option><option>Annual</option></select></label>
+              </div>
+              <label>Decision question<textarea id="question">Which revenue motion should we scale, fix, or pause before adding more budget?</textarea></label>
+              <div class="form-grid four">
+                <label>Revenue / customer<input id="arpu" type="number" value="250" min="0" /></label>
+                <label>Gross margin %<input id="margin" type="number" value="75" min="0" max="100" /></label>
+                <label>LTV months<input id="ltvMonths" type="number" value="18" min="1" /></label>
+                <label>Shared overhead<input id="sharedCost" type="number" value="5500" min="0" /></label>
+              </div>
+            </article>
+            <article class="control-card">
+              <h3>Revenue motions</h3>
+              <div class="motion-grid" id="motionSelect"></div>
+            </article>
+            <article class="control-card visual wide">
+              <h3>Assumption workbench</h3>
+              <p>Adjust active motion assumptions. The economics, scenario comparison, and artifact update immediately.</p>
+              <div class="motion-inputs" id="motionInputs"></div>
+            </article>
+          </div>
+        </section>
+
+        <section class="canvas-panel" data-panel="results">
+          <div class="panel-head">
+            <div>
+              <p class="eyebrow">Calculated economics</p>
+              <h2>Numbers first. Interpretation later.</h2>
+              <p>v0.20 replaces targetless bars with rankings, facts, and traceable rows.</p>
+            </div>
+          </div>
+          <div class="panel-body">
+            <div class="metrics-strip">
+              <div class="metric"><span>Readiness gate</span><strong id="metricReadiness">-</strong></div>
+              <div class="metric"><span>Blended CAC</span><strong id="metricCac">-</strong></div>
+              <div class="metric"><span>Payback</span><strong id="metricPayback">-</strong></div>
+              <div class="metric"><span>Profit</span><strong id="metricProfit">-</strong></div>
+              <div class="metric"><span>Selected</span><strong id="metricSelected">Base</strong></div>
+            </div>
+            <div class="visual-grid">
+              <article class="visual"><h3>Profit ranking</h3><p>Motion contribution ranked by profit. Negative motions are marked directly.</p><div id="profitRank"></div></article>
+              <article class="visual"><h3>CAC ranking</h3><p>Cost per customer, sorted from most efficient to least efficient.</p><div id="cacRank"></div></article>
+              <article class="visual"><h3>Funnel facts</h3><p>Plain calculated totals with no implied benchmark.</p><div class="fact-grid" id="funnelFacts"></div></article>
+              <article class="visual"><h3>Motion audit</h3><p>Traceable economics by active motion.</p><div class="table-wrap"><table><thead><tr><th>Motion</th><th>Customers</th><th>CAC</th><th>Profit</th></tr></thead><tbody id="motionTable"></tbody></table></div></article>
+            </div>
+          </div>
+        </section>
+
+        <section class="canvas-panel" data-panel="compare">
+          <div class="panel-head">
+            <div>
+              <p class="eyebrow">Scenario comparison</p>
+              <h2>Choose the plan with the economics visible.</h2>
+              <p>The readiness gate cannot turn green while the selected plan is loss-making.</p>
+            </div>
+          </div>
+          <div class="panel-body compare-grid">
+            <div class="matrix-wrap">
+              <div class="matrix-head"><span>Scenario</span><span>Readiness</span><span>Profit</span><span>CAC</span><span>Payback</span></div>
+              <div id="scenarioMatrix"></div>
+            </div>
+            <div class="selection-panel">
+              <article class="control-card">
+                <p class="eyebrow">Selected scenario</p>
+                <h2 id="selectedScenarioTitle">Base</h2>
+                <p id="selectedScenarioCopy">Scenario details will appear after calculations run.</p>
+                <p class="readiness-note" id="readinessReason">Profitability gate status will appear here.</p>
+              </article>
+              <div class="scenario-picker" id="scenarioPicker" role="radiogroup" aria-label="Select scenario"></div>
+            </div>
+          </div>
+        </section>
+
+        <section class="canvas-panel" data-panel="analyst">
+          <div class="panel-head">
+            <div>
+              <p class="eyebrow">Decision analyst</p>
+              <h2>Ask for interpretation after the model runs.</h2>
+              <p>The analyst layer is deterministic and mocked. It now respects the profitability gate.</p>
+            </div>
+          </div>
+          <div class="panel-body">
+            <section class="ai-panel">
+              <div class="analyst-meta"><span id="analystSource">Checking backend</span><span>No external AI</span><span>No secrets</span></div>
+              <div class="ai-actions">
+                <button class="button primary" data-ai-action="explain_plan" type="button">Explain plan</button>
+                <button class="button" data-ai-action="diagnose_risk" type="button">Diagnose risk</button>
+                <button class="button" data-ai-action="improve_economics" type="button">Improve economics</button>
+                <button class="button" data-ai-action="draft_decision_memo" type="button">Draft memo</button>
+              </div>
+              <pre id="aiOutput" class="ai-output">Review calculated economics, select a scenario, then ask the backend analyst mock for interpretation.</pre>
+            </section>
+          </div>
+        </section>
+
+        <section class="canvas-panel" data-panel="artifact">
+          <div class="panel-head">
+            <div>
+              <p class="eyebrow">Final plan output</p>
+              <h2>The preserved decision record.</h2>
+              <p>The artifact captures selected scenario economics, active motions, deterministic warnings, and analyst-ready context.</p>
+            </div>
+          </div>
+          <div class="panel-body artifact-layout">
+            <article class="artifact-card">
+              <div class="artifact-head">
+                <div><p class="eyebrow">Decision record</p><h3 id="finalTitle">Revenue plan</h3></div>
+                <span id="finalReadiness" class="readiness-pill">-</span>
+              </div>
+              <pre id="finalMemo" class="final-memo"></pre>
+            </article>
+            <aside class="saved-panel">
+              <h3>Artifact preview</h3>
+              <pre class="artifact-preview" id="artifactPreview"></pre>
+              <h3>Saved plans</h3>
+              <div id="savedPlans"></div>
+            </aside>
+          </div>
+        </section>
+      </section>
+
+      <aside class="decision-cockpit" aria-label="Live decision cockpit">
+        <section class="cockpit-panel">
+          <div class="cockpit-head">
+            <span class="decision-signal" id="decisionSignal">Checking plan</span>
+            <p>Selected scenario, warnings, and readiness status stay visible while you work.</p>
+          </div>
+          <div class="cockpit-body">
+            <div class="cockpit-block"><span>Selected scenario</span><strong id="cockpitScenario">Base</strong></div>
+            <div class="cockpit-block"><span>Leading motion</span><strong id="cockpitBestMotion">-</strong></div>
+            <div class="cockpit-block"><span>Decision status</span><p id="cockpitDecision">-</p></div>
+            <div class="cockpit-block"><span>Warnings</span><ul id="cockpitWarnings"></ul></div>
+          </div>
+        </section>
+      </aside>
+    </section>
+  </main>
+
+  <script type="module" src="/assets/v20/app.js"></script>
+</body>
+</html>
