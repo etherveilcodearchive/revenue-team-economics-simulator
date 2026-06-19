@@ -1,0 +1,247 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Revenue Motion Planner - v0.18</title>
+  <meta name="description" content="EV-PROD-001 v0.18 guided planning workspace with Cloudflare backend foundation." />
+  <link rel="stylesheet" href="/assets/v18/styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="shell topbar-inner">
+      <a class="brand" href="/">
+        <span>EV-PROD-001</span>
+        <strong>Revenue Motion Planner</strong>
+      </a>
+      <nav class="route-links" aria-label="Prototype routes">
+        <a href="/build-info.html">Build info</a>
+        <a href="/simulator-v17.html">v0.17</a>
+        <a href="/simulator-v16.html">v0.16</a>
+        <a href="/simulator-v15.html">v0.15</a>
+        <a href="/simulator-v14.html">v0.14</a>
+        <a href="/simulator-v13.html">v0.13</a>
+        <a href="/simulator.html">v0.12</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="shell hero" id="top">
+      <div class="hero-grid">
+        <div>
+          <p class="eyebrow">v0.18 guided product flow</p>
+          <h1>Move from planning question to preserved revenue decision.</h1>
+          <p class="lead">This preview turns the simulator into a guided workspace: set the decision context, build the model, compare scenarios, ask the backend analyst mock, and preserve the final plan artifact.</p>
+          <div class="hero-actions">
+            <a class="button primary" href="#context">Start the guided flow</a>
+            <a class="button ghost" href="#backend">Check backend foundation</a>
+          </div>
+        </div>
+        <aside class="status-card" aria-label="Build and backend status">
+          <span class="backend-pill" id="backendStatus">Checking API</span>
+          <dl>
+            <dt>Product</dt><dd>EV-PROD-001</dd>
+            <dt>Version</dt><dd>v0.18</dd>
+            <dt>Branch</dt><dd>preview-v018-guided-backend</dd>
+            <dt>Commit</dt><dd>branch head</dd>
+            <dt>Backend</dt><dd id="backendDetail">Connecting to /api/health...</dd>
+          </dl>
+        </aside>
+      </div>
+    </section>
+
+    <section class="progress-band" aria-label="Planning progress">
+      <div class="shell progress-inner">
+        <p class="plan-pulse" id="planPulse">Preparing planning checkpoints...</p>
+        <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+        <nav class="stage-links" aria-label="Guided stages">
+          <a class="stage-link active" data-stage-link href="#context"><b>1</b><span>Context</span></a>
+          <a class="stage-link" data-stage-link href="#motions"><b>2</b><span>Motions</span></a>
+          <a class="stage-link" data-stage-link href="#assumptions"><b>3</b><span>Assumptions</span></a>
+          <a class="stage-link" data-stage-link href="#economics"><b>4</b><span>Economics</span></a>
+          <a class="stage-link" data-stage-link href="#scenarios"><b>5</b><span>Compare</span></a>
+          <a class="stage-link" data-stage-link href="#selection"><b>6</b><span>Select</span></a>
+          <a class="stage-link" data-stage-link href="#analyst"><b>7</b><span>Analyst</span></a>
+          <a class="stage-link" data-stage-link href="#final"><b>8</b><span>Artifact</span></a>
+        </nav>
+      </div>
+    </section>
+
+    <section class="shell snapshot" aria-label="Live decision snapshot">
+      <div class="snapshot-intro">
+        <p class="eyebrow">Live decision snapshot</p>
+        <h2 id="heroReadiness">Awaiting model</h2>
+        <p id="heroSummary">Complete the guided flow to generate a final decision artifact.</p>
+      </div>
+      <div class="metric-grid">
+        <div class="metric"><span>Readiness</span><strong id="metricReadiness">-</strong></div>
+        <div class="metric"><span>Blended CAC</span><strong id="metricCac">-</strong></div>
+        <div class="metric"><span>Payback</span><strong id="metricPayback">-</strong></div>
+        <div class="metric"><span>Profit</span><strong id="metricProfit">-</strong></div>
+        <div class="metric"><span>Selected plan</span><strong id="metricSelected">Base</strong></div>
+      </div>
+    </section>
+
+    <div class="shell app-frame">
+      <aside class="guidance-rail">
+        <p class="eyebrow">How to use this workspace</p>
+        <h2>Build the plan in order.</h2>
+        <ol>
+          <li>Anchor the business decision.</li>
+          <li>Choose only relevant revenue motions.</li>
+          <li>Enter assumptions, then read calculated economics.</li>
+          <li>Select the plan, ask the analyst, and preserve the artifact.</li>
+        </ol>
+      </aside>
+
+      <section class="workbench">
+        <section class="stage input-stage" id="context">
+          <aside class="stage-guide">
+            <span class="stage-number">1</span>
+            <p class="stage-kicker">Set decision context</p>
+            <h3>Define what this plan must decide.</h3>
+            <p>The final artifact is only useful if the planning question is explicit before numbers start moving.</p>
+          </aside>
+          <div class="stage-body">
+            <div class="panel">
+              <div class="form-grid three">
+                <label>Company / client<input id="company" value="Acme Growth Co." /></label>
+                <label>Currency<select id="currency"><option value="$">USD $</option><option value="€">EUR €</option><option value="£">GBP £</option><option value="₨">PKR ₨</option><option value="د.إ">AED د.إ</option></select></label>
+                <label>Planning period<select id="period"><option>Monthly</option><option>Quarterly</option><option>Annual</option></select></label>
+              </div>
+              <label>Decision question<textarea id="question">Which revenue motion should we scale, fix, or pause before adding more budget?</textarea></label>
+              <div class="form-grid four">
+                <label>Revenue / customer<input id="arpu" type="number" value="250" min="0" /></label>
+                <label>Gross margin %<input id="margin" type="number" value="75" min="0" max="100" /></label>
+                <label>LTV months<input id="ltvMonths" type="number" value="18" min="1" /></label>
+                <label>Shared overhead<input id="sharedCost" type="number" value="5500" min="0" /></label>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="stage input-stage" id="motions">
+          <aside class="stage-guide">
+            <span class="stage-number">2</span>
+            <p class="stage-kicker">Choose revenue motions</p>
+            <h3>Decide what belongs in the model.</h3>
+            <p>Inactive motions are intentionally excluded from economics and the final plan.</p>
+          </aside>
+          <div class="stage-body motion-grid" id="motionSelect"></div>
+        </section>
+
+        <section class="stage input-stage" id="assumptions">
+          <aside class="stage-guide">
+            <span class="stage-number">3</span>
+            <p class="stage-kicker">Tune assumptions</p>
+            <h3>Adjust volume, cost, and conversion.</h3>
+            <p>This is the input workbench. Recommendations stay out until the analyst stage.</p>
+          </aside>
+          <div class="stage-body motion-inputs" id="motionInputs"></div>
+        </section>
+
+        <section class="stage output-stage" id="economics">
+          <aside class="stage-guide">
+            <span class="stage-number">4</span>
+            <p class="stage-kicker">Review economics</p>
+            <h3>Read the calculated relationships.</h3>
+            <p>The simulator shows facts: profit, CAC, funnel movement, and audit rows.</p>
+          </aside>
+          <div class="stage-body visual-grid">
+            <div class="visual"><h3>Motion profit comparison</h3><p>Contribution after motion cost.</p><div id="profitChart"></div></div>
+            <div class="visual"><h3>CAC by motion</h3><p>Cost per acquired customer.</p><div id="cacChart"></div></div>
+            <div class="visual"><h3>Funnel flow</h3><p>Leads to meetings to customers.</p><div id="funnelChart"></div></div>
+            <div class="visual"><h3>Motion audit</h3><p>Calculated outputs retained for auditability.</p><div class="table-wrap"><table><thead><tr><th>Motion</th><th>Customers</th><th>CAC</th><th>Profit</th></tr></thead><tbody id="motionTable"></tbody></table></div></div>
+          </div>
+        </section>
+
+        <section class="stage output-stage" id="scenarios">
+          <aside class="stage-guide">
+            <span class="stage-number">5</span>
+            <p class="stage-kicker">Compare scenarios</p>
+            <h3>Pressure-test the options.</h3>
+            <p>Conservative, base, and aggressive cases make the decision less fragile.</p>
+          </aside>
+          <div class="stage-body"><div class="scenario-grid" id="scenarioCards"></div></div>
+        </section>
+
+        <section class="stage decision-stage" id="selection">
+          <aside class="stage-guide">
+            <span class="stage-number">6</span>
+            <p class="stage-kicker">Select the plan</p>
+            <h3>Make the choice explicit.</h3>
+            <p>The selected plan becomes the record the analyst and final artifact use.</p>
+          </aside>
+          <div class="stage-body selection-panel">
+            <div>
+              <p class="eyebrow">Selected scenario</p>
+              <h2 id="selectedScenarioTitle">Base</h2>
+              <p id="selectedScenarioCopy">Scenario details will appear after calculations run.</p>
+            </div>
+            <div class="scenario-picker" id="scenarioPicker" role="radiogroup" aria-label="Select scenario"></div>
+          </div>
+        </section>
+
+        <section class="stage decision-stage" id="analyst">
+          <aside class="stage-guide">
+            <span class="stage-number">7</span>
+            <p class="stage-kicker">Ask analyst</p>
+            <h3>Interpret after the math is visible.</h3>
+            <p>The analyst layer now calls a Cloudflare backend mock. It is deterministic, not real external AI.</p>
+          </aside>
+          <div class="stage-body ai-panel" id="backend">
+            <p class="eyebrow">Backend Decision Analyst</p>
+            <h2>Interpret the selected plan</h2>
+            <div class="analyst-meta">
+              <span id="analystSource">Checking backend</span>
+              <span>No external AI</span>
+              <span>No secrets</span>
+            </div>
+            <div class="ai-actions">
+              <button class="button primary" data-ai-action="explain_plan">Explain plan</button>
+              <button class="button" data-ai-action="diagnose_risk">Diagnose risk</button>
+              <button class="button" data-ai-action="improve_economics">Improve economics</button>
+              <button class="button" data-ai-action="draft_decision_memo">Draft memo</button>
+            </div>
+            <pre id="aiOutput" class="ai-output">Review calculated economics, select a scenario, then ask the backend analyst mock for interpretation.</pre>
+          </div>
+        </section>
+
+        <section class="stage final-stage" id="final">
+          <aside class="stage-guide">
+            <span class="stage-number">8</span>
+            <p class="stage-kicker">Preserve artifact</p>
+            <h3>Make the final output the destination.</h3>
+            <p>Save, copy, or export the selected plan after the economics and analyst interpretation have been reviewed.</p>
+          </aside>
+          <div class="stage-body final-layout">
+            <div class="final-card">
+              <div class="final-head">
+                <div>
+                  <p class="eyebrow">Final decision artifact</p>
+                  <h2 id="finalTitle">Revenue plan</h2>
+                </div>
+                <span id="finalReadiness" class="readiness-pill">-</span>
+              </div>
+              <pre id="finalMemo" class="final-memo"></pre>
+              <div class="actions">
+                <button class="button primary" id="savePlan">Save locally</button>
+                <button class="button" id="copyPlan">Copy summary</button>
+                <button class="button" id="exportPlan">Export .md</button>
+              </div>
+              <p class="backend-note">v0.18 proves the backend path. Future versions can persist this plan and serve real AI interpretation from the same boundary.</p>
+            </div>
+            <aside class="saved-panel">
+              <h3>Saved plans</h3>
+              <div id="savedPlans"></div>
+            </aside>
+          </div>
+        </section>
+      </section>
+    </div>
+  </main>
+
+  <script type="module" src="/assets/v18/app.js"></script>
+</body>
+</html>
