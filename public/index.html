@@ -6,7 +6,7 @@
   <title>Revenue Motion Planner - Etherveil</title>
   <meta name="description" content="EV-PROD-001 - Revenue Motion Planner by Etherveil." />
   <style>
-    :root { --bg:#f6f2e9; --paper:#fffdf8; --ink:#181510; --muted:#6e665a; --line:#ddd0bd; --deep:#20372f; --gold:#9b6d2e; --accent:#d9b36a; }
+    :root { --bg:#f6f2e9; --paper:#fffdf8; --ink:#181510; --muted:#6e665a; --line:#ddd0bd; --deep:#20372f; --gold:#9b6d2e; }
     * { box-sizing: border-box; }
     body { margin:0; font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; background:linear-gradient(180deg,#fbfaf6,var(--bg)); color:var(--ink); min-height:100vh; }
     main { width:min(1040px,100%); margin:0 auto; padding:clamp(24px,5vw,64px); }
@@ -29,10 +29,12 @@
     <section class="shell">
       <div class="eyebrow">EV-PROD-001 - Etherveil Forge</div>
       <h1>Build the plan. Compare the options. Preserve the decision.</h1>
-      <p>A guided revenue planning workspace that keeps deterministic economics separate from interpretation, then turns the selected plan into a usable final artifact.</p>
+      <p>A guided revenue planning workspace that moves from decision context to modeled economics, backend analyst interpretation, and a final plan artifact.</p>
       <div class="actions" aria-label="Prototype routes">
-        <a class="button primary" href="/simulator-v17.html">Open v0.17 UX foundation</a>
+        <a class="button primary" href="/simulator-v18.html">Open v0.18 guided backend preview</a>
         <a class="button" href="/build-info.html">Build info</a>
+        <a class="button" href="/api/health">API health</a>
+        <a class="button" href="/simulator-v17.html">v0.17</a>
         <a class="button" href="/simulator-v16.html">v0.16</a>
         <a class="button" href="/simulator-v15.html">v0.15</a>
         <a class="button" href="/simulator-v14.html">v0.14</a>
@@ -40,10 +42,10 @@
         <a class="button" href="/simulator.html">v0.12</a>
       </div>
       <div class="grid">
-        <div class="card"><strong>Current preview</strong><span>v0.17 UX foundation on branch preview-v017-ux-foundation.</span></div>
-        <div class="card"><strong>Build purpose</strong><span>Fix the skeleton first: clearer shell, clearer workflow, and stronger final output quality.</span></div>
-        <div class="card"><strong>Preservation</strong><span>Older prototype routes remain available for review and comparison.</span></div>
-        <div class="card"><strong>Boundary</strong><span>Frontend-only. No backend AI or production merge in this sprint.</span></div>
+        <div class="card"><strong>Current preview</strong><span>v0.18 guided product flow on branch preview-v018-guided-backend.</span></div>
+        <div class="card"><strong>Build purpose</strong><span>Make the journey feel led, not assembled, while proving Cloudflare API routes can deploy.</span></div>
+        <div class="card"><strong>Backend foundation</strong><span>Includes GET /api/health and POST /api/ai/analyze as deterministic mock endpoints.</span></div>
+        <div class="card"><strong>Boundary</strong><span>No production merge, no real external AI, no secrets, no authentication yet.</span></div>
       </div>
       <footer>Current branch preview. Production main remains untouched unless explicitly approved.</footer>
     </section>
