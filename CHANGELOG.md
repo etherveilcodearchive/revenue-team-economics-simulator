@@ -2,6 +2,27 @@
 
 All notable changes to the Revenue Team Economics Simulator will be documented here.
 
+## [0.21.0] - 2026-06-19
+
+### Simulation workspace concept pass
+
+- Added `public/concept-command-center.html` to explore a full-width simulation command center with input console, central simulation canvas, decision cockpit, scenario deck, and artifact preview.
+- Added `public/concept-financial-lab.html` to explore a calmer financial planning lab with assumptions, executive metrics, scenario table, motion economics, and decision memo preview.
+- Added `public/concept-decision-cockpit.html` to explore a product-like strategy simulator where the selected plan is the central object with motion modules, scenario posture, risk summary, and artifact drawer.
+- Added `public/assets/v21/concepts.css` as a shared static concept stylesheet for all three routes.
+- Updated `public/index.html` and `public/build-info.html` to expose the concept routes clearly while preserving v0.20 and older prototype links.
+
+### Product boundary
+
+- v0.21 is a static UX concept pass, not a full simulator build.
+- v0.20 remains the latest working simulator route.
+- No real external AI, paid API provider, secrets, authentication, database persistence, production merge, or `main` update was added.
+- Existing Cloudflare Pages Functions routes remain untouched: `GET /api/health`, `GET /api/ai/analyze`, and `POST /api/ai/analyze`.
+
+### Recommendation
+
+- Use v0.22 to turn the strongest chosen direction into a working simulator version. Initial recommendation: combine the Strategy Decision Cockpit's central plan object with the Financial Planning Lab's credible scenario table and memo preview.
+
 ## [0.20.0] - 2026-06-19
 
 ### Premium interface restraint + visual logic QA
@@ -60,7 +81,7 @@ All notable changes to the Revenue Team Economics Simulator will be documented h
 
 ### Next
 
-- Use v0.20 to review the workspace in live use, tighten mobile ergonomics, improve final artifact packaging, and decide whether the next approved backend step is persistent saved plans, richer export/share, or a real AI endpoint boundary.
+- Use v0.20 to review the workspace in live use, tighten mobile ergonomics, improve final artifact packaging, and decide whether the next approved backend step is persistent saved plans, richer share/export, or a real AI endpoint boundary.
 
 ## [0.18.0] - 2026-06-19
 
