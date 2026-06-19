@@ -6,12 +6,12 @@
   <title>Revenue Planning Workspace - Etherveil</title>
   <meta name="description" content="EV-PROD-001 - Revenue Planning Workspace by Etherveil." />
   <style>
-    :root { --bg:#eef1ee; --paper:#fff; --ink:#141a17; --muted:#66706a; --line:#d9dfd9; --deep:#18241f; --gold:#94713a; --blue:#2f6684; }
+    :root { --bg:#f4f5f2; --paper:#fff; --ink:#151916; --muted:#626b64; --line:#dde2dc; --deep:#17231d; --gold:#8a6c38; --blue:#315f78; --red:#b34a3f; }
     * { box-sizing: border-box; }
     body { margin:0; font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; background:var(--bg); color:var(--ink); min-height:100vh; }
     main { width:min(1120px,100%); margin:0 auto; padding:clamp(22px,5vw,64px); }
-    .shell { border:1px solid var(--line); background:var(--paper); border-radius:8px; padding:clamp(22px,4vw,42px); box-shadow:0 20px 60px rgba(25,36,31,.1); }
-    .eyebrow { color:var(--gold); font-weight:950; letter-spacing:.12em; text-transform:uppercase; font-size:.76rem; }
+    .shell { border:1px solid var(--line); background:var(--paper); border-radius:8px; padding:clamp(22px,4vw,42px); }
+    .eyebrow { color:var(--gold); font-weight:950; letter-spacing:.1em; text-transform:uppercase; font-size:.76rem; }
     h1 { font-size:clamp(2.2rem,6vw,5.4rem); line-height:.96; margin:12px 0 18px; letter-spacing:0; max-width:900px; }
     p { color:var(--muted); font-size:clamp(1rem,2vw,1.18rem); line-height:1.65; max-width:780px; margin:0 0 24px; }
     .actions { display:flex; gap:10px; flex-wrap:wrap; margin:28px 0 30px; }
@@ -29,11 +29,12 @@
     <section class="shell">
       <div class="eyebrow">EV-PROD-001 - Etherveil Forge</div>
       <h1>Build the plan. Compare the options. Preserve the decision.</h1>
-      <p>A modern revenue planning simulator workspace for configuring motions, reading live economics, comparing scenarios, using a backend analyst mock, and preserving the final plan artifact.</p>
+      <p>A premium, quieter revenue planning workspace with deterministic economics, profitability-gated readiness, a mocked backend analyst layer, and a preserved final decision artifact.</p>
       <div class="actions" aria-label="Prototype routes">
-        <a class="button primary" href="/simulator-v19.html">Open v0.19 workspace preview</a>
+        <a class="button primary" href="/simulator-v20.html">Open v0.20 premium QA preview</a>
         <a class="button" href="/build-info.html">Build info</a>
         <a class="button" href="/api/health">API health</a>
+        <a class="button" href="/simulator-v19.html">v0.19</a>
         <a class="button" href="/simulator-v18.html">v0.18</a>
         <a class="button" href="/simulator-v17.html">v0.17</a>
         <a class="button" href="/simulator-v16.html">v0.16</a>
@@ -43,9 +44,9 @@
         <a class="button" href="/simulator.html">v0.12</a>
       </div>
       <div class="grid">
-        <div class="card"><strong>Current preview</strong><span>v0.19 workspace UX rebuild on branch preview-v019-workspace-ux.</span></div>
-        <div class="card"><strong>Build purpose</strong><span>Move from long guided page to a full-width simulator workspace with controls, canvas, cockpit, and artifact mode.</span></div>
-        <div class="card"><strong>Backend foundation</strong><span>Preserves GET /api/health and POST /api/ai/analyze deterministic mock endpoints.</span></div>
+        <div class="card"><strong>Current preview</strong><span>v0.20 premium interface restraint and visual logic QA on branch preview-v020-premium-ui-qa.</span></div>
+        <div class="card"><strong>Readiness rule</strong><span>Loss-making plans cannot show green readiness. All-negative active motions show an economics-fail warning.</span></div>
+        <div class="card"><strong>Visual logic</strong><span>Targetless bars were replaced with rankings, plain facts, scenario rows, and audit tables.</span></div>
         <div class="card"><strong>Boundary</strong><span>No production merge, no real external AI, no secrets, no authentication, no paid integrations.</span></div>
       </div>
       <footer>Current branch preview. Production main remains untouched unless explicitly approved.</footer>
