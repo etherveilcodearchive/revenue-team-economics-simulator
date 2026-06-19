@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>EV-PROD-001 Concept - Simulation Command Center</title>
+  <link rel="stylesheet" href="/assets/v21/concepts.css" />
+</head>
+<body>
+  <header class="concept-top">
+    <a class="brand" href="/"><span>EV-PROD-001 v0.21 concept</span><strong>Simulation Command Center</strong></a>
+    <nav class="route-pills"><a class="pill active" href="/concept-command-center.html">Command</a><a class="pill" href="/concept-financial-lab.html">Lab</a><a class="pill" href="/concept-decision-cockpit.html">Cockpit</a><a class="pill" href="/simulator-v20.html">v0.20</a></nav>
+  </header>
+  <main class="concept-shell">
+    <section class="concept-hero">
+      <div><span class="concept-badge">Static UX exploration - not production</span><h1>Operate the revenue model like a simulation room.</h1><p class="hero-copy">This direction prioritizes minimal scrolling, a large current-plan canvas, and a persistent decision cockpit. The user adjusts assumptions on the left, watches the simulation surface update in the center, and reads decision readiness on the right.</p></div>
+      <aside class="note"><p class="note-title">Navigation model</p><p>Top bar for routes. Left console for inputs. Center canvas for simulation state. Right cockpit for decision status. Bottom scenario deck for plan selection.</p></aside>
+    </section>
+    <section class="command-layout">
+      <aside class="console panel-pad">
+        <p class="eyebrow">Input console</p><h2>Model controls</h2><div class="field-grid" style="margin-top:16px">
+          <label>Company stage<select><option>Series A SaaS</option><option>Founder-led services</option><option>Mid-market expansion</option></select></label>
+          <label>Primary decision<textarea>Which motion should receive the next 90 days of budget?</textarea></label>
+          <label>Revenue per customer<input value="$340" /></label><label>Gross margin<input value="72%" /></label><label>Shared monthly overhead<input value="$8,500" /></label>
+        </div>
+        <div class="drawer"><p class="label">Active motions</p><div class="module-list"><div class="module"><strong>Outbound</strong><small>High control, high cost</small></div><div class="module"><strong>Inbound</strong><small>Best margin signal</small></div><div class="module"><strong>Paid acquisition</strong><small>Watch CAC drift</small></div></div></div>
+      </aside>
+      <section class="command-canvas">
+        <div class="canvas panel-pad"><p class="eyebrow">Simulation canvas</p><h2>Current plan projection</h2><div class="metric-grid" style="margin-top:14px"><div class="metric"><span>Readiness gate</span><strong class="yellow">Needs review</strong></div><div class="metric"><span>Projected profit</span><strong>$18.4k</strong></div><div class="metric"><span>Blended CAC</span><strong>$1,185</strong></div><div class="metric"><span>Payback</span><strong>4.8 mo</strong></div></div><div class="chart-frame" style="margin-top:14px"><p class="label">Motion contribution across 90 days</p><div class="chart-line"><div class="bar" style="height:45%"></div><div class="bar" style="height:58%"></div><div class="bar" style="height:72%"></div><div class="bar warn" style="height:54%"></div><div class="bar" style="height:80%"></div><div class="bar" style="height:88%"></div><div class="bar red" style="height:34%"></div><div class="bar" style="height:91%"></div></div><p>Meaningful chart rule: bars represent a time-series projection, not an arbitrary score.</p></div></div>
+        <div class="scenario-grid"><article class="scenario-card"><h3>Conservative</h3><p>Protects margin, slower customer growth.</p><div class="scenario-meta"><span>$9.2k profit</span><span>62 readiness</span></div></article><article class="scenario-card selected"><h3>Base plan</h3><p>Balanced motion mix with one CAC warning.</p><div class="scenario-meta"><span>$18.4k profit</span><span>71 readiness</span></div></article><article class="scenario-card"><h3>Aggressive</h3><p>Higher volume, weak payback tolerance.</p><div class="scenario-meta"><span>$22.8k profit</span><span>Needs review</span></div></article></div>
+      </section>
+      <aside class="cockpit panel-pad"><p class="eyebrow">Decision cockpit</p><span class="signal yellow">Needs economics review</span><h2 style="margin-top:14px">Base plan can be reviewed, not scaled blindly.</h2><p style="margin-top:10px">Inbound carries the plan. Paid acquisition needs CAC containment before budget expands.</p><div class="drawer"><p class="label">Warnings</p><div class="module-list"><div class="module"><strong>Payback acceptable</strong><small>Inside 6 month comfort range</small></div><div class="module"><strong>CAC watch</strong><small>Paid motion is drifting against target</small></div><div class="module"><strong>Artifact posture</strong><small>Preserve as review-ready plan</small></div></div></div><div class="memo drawer"><p class="label">Final artifact preview</p><pre>Decision: Preserve Base Plan for stakeholder review.
+
+Reason: Positive portfolio profit, acceptable payback, one motion requiring CAC review.
+
+Next action: tighten paid acquisition assumptions before scaling spend.</pre></div></aside>
+    </section>
+    <section class="notes-grid"><article class="note"><p class="note-title">Optimizes for</p><p>Fast operator review and a strong sense of live simulation control.</p></article><article class="note"><p class="note-title">Why it may work</p><p>It makes the current plan the visual center and keeps inputs/decision status always adjacent.</p></article><article class="note"><p class="note-title">Tradeoffs</p><p>More complex responsive behavior and less room for detailed explanatory copy.</p></article><article class="note"><p class="note-title">Best buyer</p><p>Founders, RevOps, and fractional leaders who want a working control room.</p></article></section>
+  </main>
+</body>
+</html>
