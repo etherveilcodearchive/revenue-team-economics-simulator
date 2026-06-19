@@ -30,6 +30,8 @@ body {
 }
 button, input, select, textarea { font: inherit; }
 a { color: inherit; }
+.topbar { container-type: inline-size; }
+.workspace-shell { container-type: inline-size; }
 .workspace-shell, .topbar-inner { width: min(1520px, 100%); margin: 0 auto; padding: 0 clamp(14px, 2vw, 28px); }
 
 .topbar {
@@ -40,11 +42,11 @@ a { color: inherit; }
   z-index: 50;
   backdrop-filter: blur(14px);
 }
-.topbar-inner { align-items: center; display: grid; gap: 18px; grid-template-columns: minmax(220px, 1fr) auto auto; min-height: 66px; }
-.brand { display: grid; gap: 2px; text-decoration: none; }
+.topbar-inner { align-items: center; display: grid; gap: 18px; grid-template-columns: minmax(220px, 1fr) auto auto; min-height: 66px; min-width: 0; }
+.brand { display: grid; gap: 2px; min-width: 0; text-decoration: none; }
 .brand span, .eyebrow, .rail-label { color: var(--gold); font-size: 0.72rem; font-weight: 950; letter-spacing: 0.1em; text-transform: uppercase; }
-.brand strong { font-size: 1.05rem; }
-.top-actions, .route-links, .actions, .ai-actions { display: flex; flex-wrap: wrap; gap: 8px; }
+.brand strong { font-size: 1.05rem; overflow-wrap: anywhere; }
+.top-actions, .route-links, .actions, .ai-actions { display: flex; flex-wrap: wrap; gap: 8px; min-width: 0; }
 .route-links { justify-content: flex-end; }
 .button, .route-links a, .view-button, .scenario-button {
   align-items: center;
@@ -57,6 +59,7 @@ a { color: inherit; }
   font-weight: 850;
   justify-content: center;
   min-height: 38px;
+  min-width: 0;
   padding: 9px 12px;
   text-decoration: none;
 }
@@ -71,6 +74,7 @@ a { color: inherit; }
   gap: 14px;
   grid-template-columns: minmax(0, 1.3fr) minmax(320px, 0.7fr);
   margin-bottom: 14px;
+  min-width: 0;
 }
 .hero-panel, .status-panel, .module-rail, .canvas-panel, .cockpit-panel, .metric, .control-card, .visual, .scenario-card, .matrix-wrap, .artifact-card, .saved-panel, .ai-panel {
   background: var(--panel);
@@ -89,13 +93,14 @@ p { color: var(--muted); line-height: 1.58; }
 .status-panel dl { display: grid; gap: 8px 12px; grid-template-columns: 90px minmax(0, 1fr); margin: 0; }
 .status-panel dt { color: var(--quiet); font-size: 0.72rem; font-weight: 900; text-transform: uppercase; }
 .status-panel dd { margin: 0; overflow-wrap: anywhere; }
-.backend-pill { background: #e8f5ef; border: 1px solid rgba(31, 122, 83, 0.24); border-radius: 999px; color: var(--green); display: inline-flex; font-weight: 900; padding: 7px 10px; width: max-content; }
+.backend-pill { background: #e8f5ef; border: 1px solid rgba(31, 122, 83, 0.24); border-radius: 999px; color: var(--green); display: inline-flex; font-weight: 900; padding: 7px 10px; width: max-content; max-width: 100%; }
 
 .workspace-grid {
   align-items: start;
   display: grid;
   gap: 14px;
   grid-template-columns: 218px minmax(0, 1fr) 330px;
+  min-width: 0;
 }
 .module-rail { padding: 12px; position: sticky; top: 82px; }
 .rail-label { margin: 4px 4px 10px; }
@@ -256,6 +261,31 @@ body.artifact-focus .final-memo { max-height: calc(100vh - 260px); overflow: aut
 @media (max-width: 430px) {
   .workspace-shell, .topbar-inner { padding-left: 12px; padding-right: 12px; }
   .top-actions, .route-links, .actions, .ai-actions { width: 100%; }
+  .route-links a, .button { flex-basis: 100%; }
+  h1 { font-size: 2rem; }
+}
+
+@container (max-width: 980px) {
+  .topbar-inner, .workspace-header, .workspace-grid, .control-grid, .selection-panel, .artifact-layout, .cockpit-panel { grid-template-columns: 1fr; }
+  .module-rail, .decision-cockpit { position: static; }
+  .view-stack { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .hero-panel { grid-template-columns: 1fr; }
+  .metrics-strip, .scenario-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .visual-grid, .motion-grid, .motion-inputs { grid-template-columns: 1fr; }
+}
+@container (max-width: 720px) {
+  .top-actions, .route-links, .actions, .ai-actions { width: 100%; }
+  .route-links a, .button { flex: 1 1 145px; }
+  .view-stack, .metrics-strip, .form-grid.two, .form-grid.three, .form-grid.four, .motion-card .form-grid, .scenario-grid { grid-template-columns: 1fr; }
+  .panel-head, .artifact-head { align-items: stretch; flex-direction: column; }
+  .matrix-head { display: none; }
+  .matrix-row { grid-template-columns: 1fr; }
+  .chart-row { grid-template-columns: 1fr; gap: 6px; }
+  .chart-value, td:not(:first-child), th:not(:first-child) { text-align: left; }
+  .visual, .control-card, .artifact-card, .saved-panel, .panel-body, .panel-head { padding: 14px; }
+}
+@container (max-width: 430px) {
+  .workspace-shell, .topbar-inner { padding-left: 12px; padding-right: 12px; }
   .route-links a, .button { flex-basis: 100%; }
   h1 { font-size: 2rem; }
 }
